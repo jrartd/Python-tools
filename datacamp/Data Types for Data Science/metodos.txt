@@ -1,0 +1,7 @@
+TUPLAS
+	zip() => sirve para unir varias tuplas
+
+
+SET
+	.union() = va entre dos valores srve para unir
+	.intersection() = define los repetidos entre dos set
