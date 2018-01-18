@@ -12,7 +12,6 @@ FACEBOOK_TEMP_TOKEN = "EAAJZCEULgfrgBANMU9Umwh0yJWIfOxHe1YZAfW9aH98ZCIzUeDsR2Hi8
 
 if __name__ == '__main__':
 	token = os.environ.get("FACEBOOK_TEMP_TOKEN")
-
 	graph = facebook.GraphAPI()
 	profile = graph.get_object("me", fields="name,location")
 
