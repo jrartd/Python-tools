@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)http://seaborn.pydata.org/api.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>API reference — seaborn 0.8.1 documentation</title>
+    
+    <link rel="stylesheet" href="./API reference — seaborn 0.8.1 documentation_files/basic.css" type="text/css">
+    <link rel="stylesheet" href="./API reference — seaborn 0.8.1 documentation_files/pygments.css" type="text/css">
+    <link rel="stylesheet" href="./API reference — seaborn 0.8.1 documentation_files/style.css" type="text/css">
+    <link rel="stylesheet" href="./API reference — seaborn 0.8.1 documentation_files/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./API reference — seaborn 0.8.1 documentation_files/bootstrap-sphinx.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.8.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/jquery.js.descarga"></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/underscore.js.descarga"></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/doctools.js.descarga"></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/copybutton.js.descarga"></script>
+    <script src="./API reference — seaborn 0.8.1 documentation_files/MathJax.js.descarga" id=""></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/jquery-1.11.0.min.js.descarga"></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/jquery-fix.js.descarga"></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/bootstrap.min.js.descarga"></script>
+    <script type="text/javascript" src="./API reference — seaborn 0.8.1 documentation_files/bootstrap-sphinx.js.descarga"></script>
+    <link rel="shortcut icon" href="http://seaborn.pydata.org/_static/favicon.ico">
+    <link rel="top" title="seaborn 0.8.1 documentation" href="http://seaborn.pydata.org/index.html">
+    <link rel="next" title="seaborn.FacetGrid" href="http://seaborn.pydata.org/generated/seaborn.FacetGrid.html">
+    <link rel="prev" title="Plotting on data-aware grids" href="http://seaborn.pydata.org/tutorial/axis_grids.html">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body role="document" style=""><div id="MathJax_Message" style="display: none;"></div>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://seaborn.pydata.org/index.html">
+          seaborn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.8.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://seaborn.pydata.org/examples/index.html">Gallery</a></li>
+                <li><a href="http://seaborn.pydata.org/tutorial.html">Tutorial</a></li>
+                <li><a href="http://seaborn.pydata.org/api.html#">API</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button" id="dLabelGlobalToc" data-toggle="dropdown" data-target="#" href="http://seaborn.pydata.org/index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc" role="menu" aria-labelledby="dLabelGlobalToc"><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/introduction.html">An introduction to seaborn</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/whatsnew.html">What’s new in the package</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/installing.html">Installing and getting started</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/examples/index.html">Example gallery</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/tutorial.html">Seaborn tutorial</a></li><li class="toctree-l1 current"><a class="current reference internal" href="http://seaborn.pydata.org/api.html">API reference</a></li>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button" id="dLabelLocalToc" data-toggle="dropdown" data-target="#" href="http://seaborn.pydata.org/api.html#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc" role="menu" aria-labelledby="dLabelLocalToc"><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#">API reference</a>
+</li><li class="divider"></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#axis-grids">Axis grids</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#categorical-plots">Categorical plots</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#distribution-plots">Distribution plots</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#regression-plots">Regression plots</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#matrix-plots">Matrix plots</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#timeseries-plots">Timeseries plots</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#miscellaneous-plots">Miscellaneous plots</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#style-frontend">Style frontend</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#color-palettes">Color palettes</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#palette-widgets">Palette widgets</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/api.html#utility-functions">Utility functions</a></li>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="http://seaborn.pydata.org/search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search">
+ </div>
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="api-reference">
+<span id="api-ref"></span><h1>API reference<a class="headerlink" href="http://seaborn.pydata.org/api.html#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="axis-grids">
+<span id="grid-api"></span><h2>Axis grids<a class="headerlink" href="http://seaborn.pydata.org/api.html#axis-grids" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid" title="seaborn.FacetGrid"><code class="xref py py-obj docutils literal"><span class="pre">FacetGrid</span></code></a>(data[,&nbsp;row,&nbsp;col,&nbsp;hue,&nbsp;col_wrap,&nbsp;...])</td>
+<td>Subplot grid for plotting conditional relationships.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.factorplot.html#seaborn.factorplot" title="seaborn.factorplot"><code class="xref py py-obj docutils literal"><span class="pre">factorplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;row,&nbsp;col,&nbsp;...])</td>
+<td>Draw a categorical plot onto a FacetGrid.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-obj docutils literal"><span class="pre">lmplot</span></code></a>(x,&nbsp;y,&nbsp;data[,&nbsp;hue,&nbsp;col,&nbsp;row,&nbsp;palette,&nbsp;...])</td>
+<td>Plot data and regression model fits across a FacetGrid.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.PairGrid.html#seaborn.PairGrid" title="seaborn.PairGrid"><code class="xref py py-obj docutils literal"><span class="pre">PairGrid</span></code></a>(data[,&nbsp;hue,&nbsp;hue_order,&nbsp;palette,&nbsp;...])</td>
+<td>Subplot grid for plotting pairwise relationships in a dataset.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot"><code class="xref py py-obj docutils literal"><span class="pre">pairplot</span></code></a>(data[,&nbsp;hue,&nbsp;hue_order,&nbsp;palette,&nbsp;...])</td>
+<td>Plot pairwise relationships in a dataset.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.JointGrid.html#seaborn.JointGrid" title="seaborn.JointGrid"><code class="xref py py-obj docutils literal"><span class="pre">JointGrid</span></code></a>(x,&nbsp;y[,&nbsp;data,&nbsp;size,&nbsp;ratio,&nbsp;space,&nbsp;...])</td>
+<td>Grid for drawing a bivariate plot with marginal univariate plots.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot" title="seaborn.jointplot"><code class="xref py py-obj docutils literal"><span class="pre">jointplot</span></code></a>(x,&nbsp;y[,&nbsp;data,&nbsp;kind,&nbsp;stat_func,&nbsp;...])</td>
+<td>Draw a plot of two variables with bivariate and univariate graphs.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="categorical-plots">
+<span id="categorical-api"></span><h2>Categorical plots<a class="headerlink" href="http://seaborn.pydata.org/api.html#categorical-plots" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.stripplot.html#seaborn.stripplot" title="seaborn.stripplot"><code class="xref py py-obj docutils literal"><span class="pre">stripplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;...])</td>
+<td>Draw a scatterplot where one variable is categorical.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.swarmplot.html#seaborn.swarmplot" title="seaborn.swarmplot"><code class="xref py py-obj docutils literal"><span class="pre">swarmplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;...])</td>
+<td>Draw a categorical scatterplot with non-overlapping points.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.boxplot.html#seaborn.boxplot" title="seaborn.boxplot"><code class="xref py py-obj docutils literal"><span class="pre">boxplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;hue_order,&nbsp;...])</td>
+<td>Draw a box plot to show distributions with respect to categories.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.violinplot.html#seaborn.violinplot" title="seaborn.violinplot"><code class="xref py py-obj docutils literal"><span class="pre">violinplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;...])</td>
+<td>Draw a combination of boxplot and kernel density estimate.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lvplot.html#seaborn.lvplot" title="seaborn.lvplot"><code class="xref py py-obj docutils literal"><span class="pre">lvplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;hue_order,&nbsp;...])</td>
+<td>Draw a letter value plot to show distributions of large datasets.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.pointplot.html#seaborn.pointplot" title="seaborn.pointplot"><code class="xref py py-obj docutils literal"><span class="pre">pointplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;...])</td>
+<td>Show point estimates and confidence intervals using scatter plot glyphs.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.barplot.html#seaborn.barplot" title="seaborn.barplot"><code class="xref py py-obj docutils literal"><span class="pre">barplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;hue_order,&nbsp;...])</td>
+<td>Show point estimates and confidence intervals as rectangular bars.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.countplot.html#seaborn.countplot" title="seaborn.countplot"><code class="xref py py-obj docutils literal"><span class="pre">countplot</span></code></a>([x,&nbsp;y,&nbsp;hue,&nbsp;data,&nbsp;order,&nbsp;...])</td>
+<td>Show the counts of observations in each categorical bin using bars.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="distribution-plots">
+<span id="distribution-api"></span><h2>Distribution plots<a class="headerlink" href="http://seaborn.pydata.org/api.html#distribution-plots" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.distplot.html#seaborn.distplot" title="seaborn.distplot"><code class="xref py py-obj docutils literal"><span class="pre">distplot</span></code></a>(a[,&nbsp;bins,&nbsp;hist,&nbsp;kde,&nbsp;rug,&nbsp;fit,&nbsp;...])</td>
+<td>Flexibly plot a univariate distribution of observations.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.kdeplot.html#seaborn.kdeplot" title="seaborn.kdeplot"><code class="xref py py-obj docutils literal"><span class="pre">kdeplot</span></code></a>(data[,&nbsp;data2,&nbsp;shade,&nbsp;vertical,&nbsp;...])</td>
+<td>Fit and plot a univariate or bivariate kernel density estimate.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.rugplot.html#seaborn.rugplot" title="seaborn.rugplot"><code class="xref py py-obj docutils literal"><span class="pre">rugplot</span></code></a>(a[,&nbsp;height,&nbsp;axis,&nbsp;ax])</td>
+<td>Plot datapoints in an array as sticks on an axis.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="regression-plots">
+<span id="regression-api"></span><h2>Regression plots<a class="headerlink" href="http://seaborn.pydata.org/api.html#regression-plots" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-obj docutils literal"><span class="pre">regplot</span></code></a>(x,&nbsp;y[,&nbsp;data,&nbsp;x_estimator,&nbsp;x_bins,&nbsp;...])</td>
+<td>Plot data and a linear regression model fit.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.residplot.html#seaborn.residplot" title="seaborn.residplot"><code class="xref py py-obj docutils literal"><span class="pre">residplot</span></code></a>(x,&nbsp;y[,&nbsp;data,&nbsp;lowess,&nbsp;x_partial,&nbsp;...])</td>
+<td>Plot the residuals of a linear regression.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="matrix-plots">
+<span id="matrix-api"></span><h2>Matrix plots<a class="headerlink" href="http://seaborn.pydata.org/api.html#matrix-plots" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.heatmap.html#seaborn.heatmap" title="seaborn.heatmap"><code class="xref py py-obj docutils literal"><span class="pre">heatmap</span></code></a>(data[,&nbsp;vmin,&nbsp;vmax,&nbsp;cmap,&nbsp;center,&nbsp;...])</td>
+<td>Plot rectangular data as a color-encoded matrix.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.clustermap.html#seaborn.clustermap" title="seaborn.clustermap"><code class="xref py py-obj docutils literal"><span class="pre">clustermap</span></code></a>(data[,&nbsp;pivot_kws,&nbsp;method,&nbsp;...])</td>
+<td>Plot a matrix dataset as a hierarchically-clustered heatmap.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="timeseries-plots">
+<h2>Timeseries plots<a class="headerlink" href="http://seaborn.pydata.org/api.html#timeseries-plots" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.tsplot.html#seaborn.tsplot" title="seaborn.tsplot"><code class="xref py py-obj docutils literal"><span class="pre">tsplot</span></code></a>(data[,&nbsp;time,&nbsp;unit,&nbsp;condition,&nbsp;value,&nbsp;...])</td>
+<td>Plot one or more timeseries with flexible representation of uncertainty.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="miscellaneous-plots">
+<h2>Miscellaneous plots<a class="headerlink" href="http://seaborn.pydata.org/api.html#miscellaneous-plots" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.palplot.html#seaborn.palplot" title="seaborn.palplot"><code class="xref py py-obj docutils literal"><span class="pre">palplot</span></code></a>(pal[,&nbsp;size])</td>
+<td>Plot the values in a color palette as a horizontal array.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="style-frontend">
+<span id="style-api"></span><h2>Style frontend<a class="headerlink" href="http://seaborn.pydata.org/api.html#style-frontend" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.set.html#seaborn.set" title="seaborn.set"><code class="xref py py-obj docutils literal"><span class="pre">set</span></code></a>([context,&nbsp;style,&nbsp;palette,&nbsp;font,&nbsp;...])</td>
+<td>Set aesthetic parameters in one step.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.axes_style.html#seaborn.axes_style" title="seaborn.axes_style"><code class="xref py py-obj docutils literal"><span class="pre">axes_style</span></code></a>([style,&nbsp;rc])</td>
+<td>Return a parameter dict for the aesthetic style of the plots.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.set_style.html#seaborn.set_style" title="seaborn.set_style"><code class="xref py py-obj docutils literal"><span class="pre">set_style</span></code></a>([style,&nbsp;rc])</td>
+<td>Set the aesthetic style of the plots.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.plotting_context.html#seaborn.plotting_context" title="seaborn.plotting_context"><code class="xref py py-obj docutils literal"><span class="pre">plotting_context</span></code></a>([context,&nbsp;font_scale,&nbsp;rc])</td>
+<td>Return a parameter dict to scale elements of the figure.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.set_context.html#seaborn.set_context" title="seaborn.set_context"><code class="xref py py-obj docutils literal"><span class="pre">set_context</span></code></a>([context,&nbsp;font_scale,&nbsp;rc])</td>
+<td>Set the plotting context parameters.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.set_color_codes.html#seaborn.set_color_codes" title="seaborn.set_color_codes"><code class="xref py py-obj docutils literal"><span class="pre">set_color_codes</span></code></a>([palette])</td>
+<td>Change how matplotlib color shorthands are interpreted.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.reset_defaults.html#seaborn.reset_defaults" title="seaborn.reset_defaults"><code class="xref py py-obj docutils literal"><span class="pre">reset_defaults</span></code></a>()</td>
+<td>Restore all RC params to default settings.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.reset_orig.html#seaborn.reset_orig" title="seaborn.reset_orig"><code class="xref py py-obj docutils literal"><span class="pre">reset_orig</span></code></a>()</td>
+<td>Restore all RC params to original settings (respects custom rc).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="color-palettes">
+<span id="palette-api"></span><h2>Color palettes<a class="headerlink" href="http://seaborn.pydata.org/api.html#color-palettes" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.set_palette.html#seaborn.set_palette" title="seaborn.set_palette"><code class="xref py py-obj docutils literal"><span class="pre">set_palette</span></code></a>(palette[,&nbsp;n_colors,&nbsp;desat,&nbsp;...])</td>
+<td>Set the matplotlib color cycle using a seaborn palette.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.color_palette.html#seaborn.color_palette" title="seaborn.color_palette"><code class="xref py py-obj docutils literal"><span class="pre">color_palette</span></code></a>([palette,&nbsp;n_colors,&nbsp;desat])</td>
+<td>Return a list of colors defining a color palette.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.husl_palette.html#seaborn.husl_palette" title="seaborn.husl_palette"><code class="xref py py-obj docutils literal"><span class="pre">husl_palette</span></code></a>([n_colors,&nbsp;h,&nbsp;s,&nbsp;l])</td>
+<td>Get a set of evenly spaced colors in HUSL hue space.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.hls_palette.html#seaborn.hls_palette" title="seaborn.hls_palette"><code class="xref py py-obj docutils literal"><span class="pre">hls_palette</span></code></a>([n_colors,&nbsp;h,&nbsp;l,&nbsp;s])</td>
+<td>Get a set of evenly spaced colors in HLS hue space.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.cubehelix_palette.html#seaborn.cubehelix_palette" title="seaborn.cubehelix_palette"><code class="xref py py-obj docutils literal"><span class="pre">cubehelix_palette</span></code></a>([n_colors,&nbsp;start,&nbsp;rot,&nbsp;...])</td>
+<td>Make a sequential palette from the cubehelix system.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.dark_palette.html#seaborn.dark_palette" title="seaborn.dark_palette"><code class="xref py py-obj docutils literal"><span class="pre">dark_palette</span></code></a>(color[,&nbsp;n_colors,&nbsp;reverse,&nbsp;...])</td>
+<td>Make a sequential palette that blends from dark to <code class="docutils literal"><span class="pre">color</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.light_palette.html#seaborn.light_palette" title="seaborn.light_palette"><code class="xref py py-obj docutils literal"><span class="pre">light_palette</span></code></a>(color[,&nbsp;n_colors,&nbsp;reverse,&nbsp;...])</td>
+<td>Make a sequential palette that blends from light to <code class="docutils literal"><span class="pre">color</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.diverging_palette.html#seaborn.diverging_palette" title="seaborn.diverging_palette"><code class="xref py py-obj docutils literal"><span class="pre">diverging_palette</span></code></a>(h_neg,&nbsp;h_pos[,&nbsp;s,&nbsp;l,&nbsp;sep,&nbsp;...])</td>
+<td>Make a diverging palette between two HUSL colors.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.blend_palette.html#seaborn.blend_palette" title="seaborn.blend_palette"><code class="xref py py-obj docutils literal"><span class="pre">blend_palette</span></code></a>(colors[,&nbsp;n_colors,&nbsp;as_cmap,&nbsp;input])</td>
+<td>Make a palette that blends between a list of colors.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.xkcd_palette.html#seaborn.xkcd_palette" title="seaborn.xkcd_palette"><code class="xref py py-obj docutils literal"><span class="pre">xkcd_palette</span></code></a>(colors)</td>
+<td>Make a palette with color names from the xkcd color survey.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.crayon_palette.html#seaborn.crayon_palette" title="seaborn.crayon_palette"><code class="xref py py-obj docutils literal"><span class="pre">crayon_palette</span></code></a>(colors)</td>
+<td>Make a palette with color names from Crayola crayons.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.mpl_palette.html#seaborn.mpl_palette" title="seaborn.mpl_palette"><code class="xref py py-obj docutils literal"><span class="pre">mpl_palette</span></code></a>(name[,&nbsp;n_colors])</td>
+<td>Return discrete colors from a matplotlib palette.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="palette-widgets">
+<h2>Palette widgets<a class="headerlink" href="http://seaborn.pydata.org/api.html#palette-widgets" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.choose_colorbrewer_palette.html#seaborn.choose_colorbrewer_palette" title="seaborn.choose_colorbrewer_palette"><code class="xref py py-obj docutils literal"><span class="pre">choose_colorbrewer_palette</span></code></a>(data_type[,&nbsp;as_cmap])</td>
+<td>Select a palette from the ColorBrewer set.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.choose_cubehelix_palette.html#seaborn.choose_cubehelix_palette" title="seaborn.choose_cubehelix_palette"><code class="xref py py-obj docutils literal"><span class="pre">choose_cubehelix_palette</span></code></a>([as_cmap])</td>
+<td>Launch an interactive widget to create a sequential cubehelix palette.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.choose_light_palette.html#seaborn.choose_light_palette" title="seaborn.choose_light_palette"><code class="xref py py-obj docutils literal"><span class="pre">choose_light_palette</span></code></a>([input,&nbsp;as_cmap])</td>
+<td>Launch an interactive widget to create a light sequential palette.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.choose_dark_palette.html#seaborn.choose_dark_palette" title="seaborn.choose_dark_palette"><code class="xref py py-obj docutils literal"><span class="pre">choose_dark_palette</span></code></a>([input,&nbsp;as_cmap])</td>
+<td>Launch an interactive widget to create a dark sequential palette.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.choose_diverging_palette.html#seaborn.choose_diverging_palette" title="seaborn.choose_diverging_palette"><code class="xref py py-obj docutils literal"><span class="pre">choose_diverging_palette</span></code></a>([as_cmap])</td>
+<td>Launch an interactive widget to choose a diverging color palette.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="utility-functions">
+<h2>Utility functions<a class="headerlink" href="http://seaborn.pydata.org/api.html#utility-functions" title="Permalink to this headline">¶</a></h2>
+<table border="0" class="longtable table">
+<colgroup>
+<col width="10%">
+<col width="90%">
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.despine.html#seaborn.despine" title="seaborn.despine"><code class="xref py py-obj docutils literal"><span class="pre">despine</span></code></a>([fig,&nbsp;ax,&nbsp;top,&nbsp;right,&nbsp;left,&nbsp;bottom,&nbsp;...])</td>
+<td>Remove the top and right spines from plot(s).</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.desaturate.html#seaborn.desaturate" title="seaborn.desaturate"><code class="xref py py-obj docutils literal"><span class="pre">desaturate</span></code></a>(color,&nbsp;prop)</td>
+<td>Decrease the saturation channel of a color by some percent.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.saturate.html#seaborn.saturate" title="seaborn.saturate"><code class="xref py py-obj docutils literal"><span class="pre">saturate</span></code></a>(color)</td>
+<td>Return a fully saturated color with the same hue.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.set_hls_values.html#seaborn.set_hls_values" title="seaborn.set_hls_values"><code class="xref py py-obj docutils literal"><span class="pre">set_hls_values</span></code></a>(color[,&nbsp;h,&nbsp;l,&nbsp;s])</td>
+<td>Independently manipulate the h, l, or s channels of a color.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="http://seaborn.pydata.org/api.html#">Back to top</a>
+      
+        <br>
+        
+      
+    </p>
+    <p>
+        © Copyright 2012-2017, Michael Waskom.<br>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.<br>
+    </p>
+  </div>
+</footer>
+  
+
+</body></html>

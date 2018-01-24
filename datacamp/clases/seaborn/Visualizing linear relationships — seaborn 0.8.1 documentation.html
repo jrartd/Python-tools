@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)http://seaborn.pydata.org/tutorial/regression.html#fitting-different-kinds-of-models -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <title>Visualizing linear relationships — seaborn 0.8.1 documentation</title>
+    
+    <link rel="stylesheet" href="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/basic.css" type="text/css">
+    <link rel="stylesheet" href="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/pygments.css" type="text/css">
+    <link rel="stylesheet" href="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/style.css" type="text/css">
+    <link rel="stylesheet" href="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/bootstrap-sphinx.css" type="text/css">
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.8.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/jquery.js.descarga"></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/underscore.js.descarga"></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/doctools.js.descarga"></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/copybutton.js.descarga"></script>
+    <script src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/MathJax.js.descarga" id=""></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/jquery-1.11.0.min.js.descarga"></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/jquery-fix.js.descarga"></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/bootstrap.min.js.descarga"></script>
+    <script type="text/javascript" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/bootstrap-sphinx.js.descarga"></script>
+    <link rel="shortcut icon" href="http://seaborn.pydata.org/_static/favicon.ico">
+    <link rel="top" title="seaborn 0.8.1 documentation" href="http://seaborn.pydata.org/index.html">
+    <link rel="up" title="Seaborn tutorial" href="http://seaborn.pydata.org/tutorial.html">
+    <link rel="next" title="Plotting on data-aware grids" href="http://seaborn.pydata.org/tutorial/axis_grids.html">
+    <link rel="prev" title="Plotting with categorical data" href="http://seaborn.pydata.org/tutorial/categorical.html">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body role="document" style=""><div id="MathJax_Message" style="display: none;"></div>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://seaborn.pydata.org/index.html">
+          seaborn</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.8.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="http://seaborn.pydata.org/examples/index.html">Gallery</a></li>
+                <li><a href="http://seaborn.pydata.org/tutorial.html">Tutorial</a></li>
+                <li><a href="http://seaborn.pydata.org/api.html">API</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button" id="dLabelGlobalToc" data-toggle="dropdown" data-target="#" href="http://seaborn.pydata.org/index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc" role="menu" aria-labelledby="dLabelGlobalToc"><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/introduction.html">An introduction to seaborn</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/whatsnew.html">What’s new in the package</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/installing.html">Installing and getting started</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/examples/index.html">Example gallery</a></li><li class="toctree-l1 current"><a class="reference internal" href="http://seaborn.pydata.org/tutorial.html">Seaborn tutorial</a></li><li class="toctree-l1"><a class="reference internal" href="http://seaborn.pydata.org/api.html">API reference</a></li>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button" id="dLabelLocalToc" data-toggle="dropdown" data-target="#" href="http://seaborn.pydata.org/tutorial/regression.html#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc" role="menu" aria-labelledby="dLabelLocalToc"><li><a class="reference internal" href="http://seaborn.pydata.org/tutorial/regression.html#">Visualizing linear relationships</a>
+</li><li class="divider"></li><li><a class="reference internal" href="http://seaborn.pydata.org/tutorial/regression.html#functions-to-draw-linear-regression-models">Functions to draw linear regression models</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/tutorial/regression.html#fitting-different-kinds-of-models">Fitting different kinds of models</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/tutorial/regression.html#conditioning-on-other-variables">Conditioning on other variables</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/tutorial/regression.html#controlling-the-size-and-shape-of-the-plot">Controlling the size and shape of the plot</a></li><li><a class="reference internal" href="http://seaborn.pydata.org/tutorial/regression.html#plotting-a-regression-in-other-contexts">Plotting a regression in other contexts</a></li>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="http://seaborn.pydata.org/search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search">
+ </div>
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="visualizing-linear-relationships">
+<span id="regression-tutorial"></span><h1>Visualizing linear relationships<a class="headerlink" href="http://seaborn.pydata.org/tutorial/regression.html#visualizing-linear-relationships" title="Permalink to this headline">¶</a></h1>
+<p>Many datasets contain multiple quantitative variables, and the goal of an analysis is often to relate those variables to each other. We <a class="reference internal" href="http://seaborn.pydata.org/tutorial/distributions.html#distribution-tutorial"><span>previously discussed</span></a> functions that can accomplish this by showing the joint distribution of two variables. It can be very helpful, though, to use statistical models to estimate a simple relationship between two noisy sets of observations. The functions discussed in this chapter will do so through the common framework of linear regression.</p>
+<p>In the spirit of Tukey, the regression plots in seaborn are primarily intended to add a visual guide that helps to emphasize patterns in a dataset during exploratory data analyses. That is to say that seaborn is not itself a package for statistical analysis. To obtain quantitative measures related to the fit of regression models, you should use <a class="reference external" href="http://statsmodels.sourceforge.net/">statsmodels</a>. The goal of seaborn, however, is to make exploring a dataset through visualization quick and easy, as doing so is just as (if not more) important than exploring a dataset through tables of statistics.</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span>%matplotlib inline
+</pre></div>
+</div>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">color_codes</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">ord</span><span class="p">,</span> <span class="s2">"regression"</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"tips"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="functions-to-draw-linear-regression-models">
+<h2>Functions to draw linear regression models<a class="headerlink" href="http://seaborn.pydata.org/tutorial/regression.html#functions-to-draw-linear-regression-models" title="Permalink to this headline">¶</a></h2>
+<p>Two main functions in seaborn are used to visualize a linear relationship as determined through regression. These functions, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> and <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> are closely related, and share much of their core functionality. It is important to understand the ways they differ, however, so that you can quickly choose the correct tool for particular job.</p>
+<p>In the simplest invocation, both functions draw a scatterplot of two variables, <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>, and then fit the regression model <code class="docutils literal"><span class="pre">y</span> <span class="pre">~</span> <span class="pre">x</span></code> and plot the resulting regression line and a 95% confidence interval for that regression:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_9_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_9_0.png">
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_10_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_10_0.png">
+<p>You should note that the resulting plots are identical, except that the figure shapes are different. We will explain why this is shortly. For now, the other main difference to know about is that <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> accepts the <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> variables in a variety of formats including simple numpy arrays, pandas <code class="docutils literal"><span class="pre">Series</span></code> objects, or as references to variables in a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code> object passed to <code class="docutils literal"><span class="pre">data</span></code>. In contrast, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> has <code class="docutils literal"><span class="pre">data</span></code> as a required parameter and the <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> variables must be specified as strings. This data format is called “long-form” or <a class="reference external" href="http://vita.had.co.nz/papers/tidy-data.pdf">“tidy”</a> data. Other than this input flexibility, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> possesses a subset of <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a>‘s features, so we will demonstrate them using the latter.</p>
+<p>It’s possible to fit a linear regression when one of the variables takes discrete values, however, the simple scatterplot produced by this kind of dataset is often not optimal:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_12_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_12_0.png">
+<p>One option is to add some random noise (“jitter”) to the discrete values to make the distribution of those values more clear. Note that jitter is applied only to the scatterplot data and does not influence the regression line fit itself:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">x_jitter</span><span class="o">=.</span><span class="mo">05</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_14_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_14_0.png">
+<p>A second option is to collapse over the observations in each discrete bin to plot an estimate of central tendency along with a confidence interval:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"size"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">x_estimator</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_16_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_16_0.png">
+</div>
+<div class="section" id="fitting-different-kinds-of-models">
+<h2>Fitting different kinds of models<a class="headerlink" href="http://seaborn.pydata.org/tutorial/regression.html#fitting-different-kinds-of-models" title="Permalink to this headline">¶</a></h2>
+<p>The simple linear regression model used above is very simple to fit, however, it is not appropriate for some kinds of datasets. The <a class="reference external" href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe’s quartet</a> dataset shows a few examples where simple linear regression provides an identical estimate of a relationship where simple visual inspection clearly shows differences. For example, in the first case, the linear regression is a good model:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">anscombe</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"anscombe"</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'I'"</span><span class="p">),</span>
+           <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_19_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_19_0.png">
+<p>The linear relationship in the second dataset is the same, but the plot clearly shows that this is not a good model:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'II'"</span><span class="p">),</span>
+           <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_21_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_21_0.png">
+<p>In the presence of these kind of higher-order relationships, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> and <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> can fit a polynomial regression model to explore simple kinds of nonlinear trends in the dataset:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'II'"</span><span class="p">),</span>
+           <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_23_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_23_0.png">
+<p>A different problem is posed by “outlier” observations that deviate for some reason other than the main relationship under study:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'III'"</span><span class="p">),</span>
+           <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_25_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_25_0.png">
+<p>In the presence of outliers, it can be useful to fit a robust regression, which uses a different loss function to downweight relatively large residuals:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'III'"</span><span class="p">),</span>
+           <span class="n">robust</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_27_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_27_0.png">
+<p>When the <code class="docutils literal"><span class="pre">y</span></code> variable is binary, simple linear regression also “works” but provides implausible predictions:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">"big_tip"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">tips</span><span class="o">.</span><span class="n">tip</span> <span class="o">/</span> <span class="n">tips</span><span class="o">.</span><span class="n">total_bill</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">.</span><span class="mi">15</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"big_tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+           <span class="n">y_jitter</span><span class="o">=.</span><span class="mo">03</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_29_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_29_0.png">
+<p>The solution in this case is to fit a logistic regression, such that the regression line shows the estimated probability of <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">1</span></code> for a given value of <code class="docutils literal"><span class="pre">x</span></code>:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"big_tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+           <span class="n">logistic</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">y_jitter</span><span class="o">=.</span><span class="mo">03</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_31_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_31_0.png">
+<p>Note that the logistic regression estimate is considerably more computationally intensive (this is true of robust regression as well) than simple regression, and as the confidence interval around the regression line is computed using a bootstrap procedure, you may wish to turn this off for faster iteration (using <code class="docutils literal"><span class="pre">ci=None</span></code>).</p>
+<p>An altogether different approach is to fit a nonparametric regression using a <a class="reference external" href="https://en.wikipedia.org/wiki/Local_regression">lowess smoother</a>. This approach has the fewest assumptions, although it is computationally intensive and so currently confidence intervals are not computed at all:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+           <span class="n">lowess</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_33_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_33_0.png">
+<p>The <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.residplot.html#seaborn.residplot" title="seaborn.residplot"><code class="xref py py-func docutils literal"><span class="pre">residplot()</span></code></a> function can be a useful tool for checking whether the simple regression model is appropriate for a dataset. It fits and removes a simple linear regression and then plots the residual values for each observation. Ideally, these values should be randomly scattered around <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">0</span></code>:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">residplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'I'"</span><span class="p">),</span>
+              <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_35_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_35_0.png">
+<p>If there is structure in the residuals, it suggests that simple linear regression is not appropriate:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">residplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">anscombe</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"dataset == 'II'"</span><span class="p">),</span>
+              <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">"s"</span><span class="p">:</span> <span class="mi">80</span><span class="p">});</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_37_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_37_0.png">
+</div>
+<div class="section" id="conditioning-on-other-variables">
+<h2>Conditioning on other variables<a class="headerlink" href="http://seaborn.pydata.org/tutorial/regression.html#conditioning-on-other-variables" title="Permalink to this headline">¶</a></h2>
+<p>The plots above show many ways to explore the relationship between a pair of variables. Often, however, a more interesting question is “how does the relationship between these two variables change as a function of a third variable?” This is where the difference  between <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> and <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> appears. While <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> always shows a single relationship, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> combines <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> with <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid" title="seaborn.FacetGrid"><code class="xref py py-class docutils literal"><span class="pre">FacetGrid</span></code></a> to provide an easy interface to show a linear regression on “faceted” plots that allow you to explore interactions with up to three additional categorical variables.</p>
+<p>The best way to separate out a relationship is to plot both levels on the same axes and to use color to distinguish them:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_39_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_39_0.png">
+<p>In addition to color, it’s possible to use different scatterplot markers to make plots the reproduce to black and white better. You also have full control over the colors used:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+           <span class="n">markers</span><span class="o">=</span><span class="p">[</span><span class="s2">"o"</span><span class="p">,</span> <span class="s2">"x"</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="s2">"Set1"</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_41_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_41_0.png">
+<p>To add another variable, you can draw multiple “facets” which each level of the variable appearing in the rows or columns of the grid:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_43_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_43_0.png">
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span>
+           <span class="n">col</span><span class="o">=</span><span class="s2">"time"</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_44_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_44_0.png">
+</div>
+<div class="section" id="controlling-the-size-and-shape-of-the-plot">
+<h2>Controlling the size and shape of the plot<a class="headerlink" href="http://seaborn.pydata.org/tutorial/regression.html#controlling-the-size-and-shape-of-the-plot" title="Permalink to this headline">¶</a></h2>
+<p>Before we noted that the default plots made by <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> and <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> look the same but on axes that have a different size and shape. This is because <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> is an “axes-level” function draws onto a specific axes. This means that you can make multi-panel figures yourself and control exactly where the regression plot goes. If no axes object is explictly provided, it simply uses the “currently active” axes, which is why the default plot has the same size and shape as most other matplotlib functions. To control the size, you need to create a figure object yourself.</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_46_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_46_0.png">
+<p>In contrast, the size and shape of the <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a> figure is controlled through the <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.FacetGrid.html#seaborn.FacetGrid" title="seaborn.FacetGrid"><code class="xref py py-class docutils literal"><span class="pre">FacetGrid</span></code></a> interface using the <code class="docutils literal"><span class="pre">size</span></code> and <code class="docutils literal"><span class="pre">aspect</span></code> parameters, which apply to each <em>facet</em> in the plot, not to the overall figure itself:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"day"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+           <span class="n">col_wrap</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_48_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_48_0.png">
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"day"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+           <span class="n">aspect</span><span class="o">=.</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_49_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_49_0.png">
+</div>
+<div class="section" id="plotting-a-regression-in-other-contexts">
+<h2>Plotting a regression in other contexts<a class="headerlink" href="http://seaborn.pydata.org/tutorial/regression.html#plotting-a-regression-in-other-contexts" title="Permalink to this headline">¶</a></h2>
+<p>A few other seaborn functions use <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> in the context of a larger, more complex plot. The first is the <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot" title="seaborn.jointplot"><code class="xref py py-func docutils literal"><span class="pre">jointplot()</span></code></a> function that we introduced in the <a class="reference internal" href="http://seaborn.pydata.org/tutorial/distributions.html#distribution-tutorial"><span>distributions tutorial</span></a>. In addition to the plot styles previously discussed, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot" title="seaborn.jointplot"><code class="xref py py-func docutils literal"><span class="pre">jointplot()</span></code></a> can use <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> to show the linear regression fit on the joint axes by passing <code class="docutils literal"><span class="pre">kind="reg"</span></code>:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"tip"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_51_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_51_0.png">
+<p>Using the <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot"><code class="xref py py-func docutils literal"><span class="pre">pairplot()</span></code></a> function with <code class="docutils literal"><span class="pre">kind="reg"</span></code> combines <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.regplot.html#seaborn.regplot" title="seaborn.regplot"><code class="xref py py-func docutils literal"><span class="pre">regplot()</span></code></a> and <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.PairGrid.html#seaborn.PairGrid" title="seaborn.PairGrid"><code class="xref py py-class docutils literal"><span class="pre">PairGrid</span></code></a> to show the linear relationship between variables in a dataset. Take care to note how this is different from <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a>. In the figure below, the two axes don’t show the same relationship conditioned on two levels of a third variable; rather, <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.PairGrid.html#seaborn.PairGrid" title="seaborn.PairGrid"><code class="xref py py-func docutils literal"><span class="pre">PairGrid()</span></code></a> is used to show multiple relationships between different pairings of the variables in a dataset:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"tip"</span><span class="p">],</span>
+             <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_53_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_53_0.png">
+<p>Like <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="seaborn.lmplot"><code class="xref py py-func docutils literal"><span class="pre">lmplot()</span></code></a>, but unlike <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.jointplot.html#seaborn.jointplot" title="seaborn.jointplot"><code class="xref py py-func docutils literal"><span class="pre">jointplot()</span></code></a>, conditioning on an additional categorical variable is built into <a class="reference internal" href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="seaborn.pairplot"><code class="xref py py-func docutils literal"><span class="pre">pairplot()</span></code></a> using the <code class="docutils literal"><span class="pre">hue</span></code> parameter:</p>
+<div class="code python highlight-python" style="position: relative;"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">x_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"total_bill"</span><span class="p">,</span> <span class="s2">"size"</span><span class="p">],</span> <span class="n">y_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">"tip"</span><span class="p">],</span>
+             <span class="n">hue</span><span class="o">=</span><span class="s2">"smoker"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=.</span><span class="mi">8</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"reg"</span><span class="p">);</span>
+</pre></div>
+</div>
+<img alt="../_images/regression_55_0.png" src="./Visualizing linear relationships — seaborn 0.8.1 documentation_files/regression_55_0.png">
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="http://seaborn.pydata.org/tutorial/regression.html#">Back to top</a>
+      
+        <br>
+        
+      
+    </p>
+    <p>
+        © Copyright 2012-2017, Michael Waskom.<br>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.3.<br>
+    </p>
+  </div>
+</footer>
+  
+
+</body></html>
