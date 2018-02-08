@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://demo.bokehplots.com/apps/sliders/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Sliders</title>
+        
+<link rel="stylesheet" href="./bokeh.min.css" type="text/css">
+<link rel="stylesheet" href="./bokeh-widgets.min.css" type="text/css">
+<link rel="stylesheet" href="./bokeh-tables.min.css" type="text/css">
+        
+<script type="text/javascript" src="./bokeh.min.js.descarga"></script>
+<script type="text/javascript" src="./bokeh-widgets.min.js.descarga"></script>
+<script type="text/javascript" src="./bokeh-tables.min.js.descarga"></script>
+<script type="text/javascript" src="./bokeh-gl.min.js.descarga"></script>
+<script type="text/javascript">
+    Bokeh.set_log_level("info");
+</script>
+        <style>
+          html {
+            width: 100%;
+            height: 100%;
+          }
+          body {
+            width: 90%;
+            height: 100%;
+            margin: auto;
+          }
+        </style>
+    </head>
+    <body>
+        
+        <div class="bk-root">
+            <div class="bk-plotdiv" id="69e2439e-1c67-41ca-82f1-306a755c0945"><div id="96790D9B87EA44E2B14FA77E1224DB04" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 800px; height: 400px;"><div id="5ACAE7B9B6404A7FA10A1E8D584E4330" class="bk-widget-box bk-layout-fixed" style="width: 280px;"><div id="9B1F76A9C7524D84A01DF710014AFA07" class="bk-widget-form-group bk-layout-fixed"><label for="10c3f0c9-7dad-4755-bb75-0d208cdf8831">title</label><input type="text" class="bk-widget-form-input" id="10c3f0c9-7dad-4755-bb75-0d208cdf8831" value="my sine wave" placeholder=""></div><div id="708758A3906F494F8F3395C3CC6F1BEC" class="bk-widget bk-layout-fixed bk-slider"><label>offset:</label><div class="bk-slider-value">0</div><div class="bk-noUi-target bk-noUi-ltr bk-noUi-horizontal"><div class="bk-noUi-base"><div class="bk-noUi-connect" style="background-color: rgb(230, 230, 230); left: 0%; right: 50%;"></div><div class="bk-noUi-origin" style="left: 50%;"><div class="bk-noUi-handle bk-noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="100.0" aria-valuenow="50.0" aria-valuetext="0.00" style="z-index: 4;"><div class="bk-noUi-tooltip">0</div></div></div></div></div></div><div id="A5F47B979DC5408AA14289387455014F" class="bk-widget bk-layout-fixed bk-slider"><label>amplitude:</label><div class="bk-slider-value">1</div><div class="bk-noUi-target bk-noUi-ltr bk-noUi-horizontal"><div class="bk-noUi-base"><div class="bk-noUi-connect" style="background-color: rgb(230, 230, 230); left: 0%; right: 40%;"></div><div class="bk-noUi-origin" style="left: 60%;"><div class="bk-noUi-handle bk-noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="100.0" aria-valuenow="60.0" aria-valuetext="1.00" style="z-index: 4;"><div class="bk-noUi-tooltip">1</div></div></div></div></div></div><div id="DB2AF8D21C4B42179061864028D0A038" class="bk-widget bk-layout-fixed bk-slider"><label>phase:</label><div class="bk-slider-value">0</div><div class="bk-noUi-target bk-noUi-ltr bk-noUi-horizontal"><div class="bk-noUi-base"><div class="bk-noUi-connect" style="background-color: rgb(230, 230, 230); left: 0%; right: 100%;"></div><div class="bk-noUi-origin" style="left: 0%;"><div class="bk-noUi-handle bk-noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="100.0" aria-valuenow="0.0" aria-valuetext="0.00" style="z-index: 4;"><div class="bk-noUi-tooltip">0</div></div></div></div></div></div><div id="A7EF5120B90E4253859A046799DEE2F1" class="bk-widget bk-layout-fixed bk-slider"><label>frequency:</label><div class="bk-slider-value">1</div><div class="bk-noUi-target bk-noUi-ltr bk-noUi-horizontal"><div class="bk-noUi-base"><div class="bk-noUi-connect" style="background-color: rgb(230, 230, 230); left: 0%; right: 82%;"></div><div class="bk-noUi-origin" style="left: 18%;"><div class="bk-noUi-handle bk-noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="100.0" aria-valuenow="18.0" aria-valuetext="1.00" style="z-index: 4;"><div class="bk-noUi-tooltip">1</div></div></div></div></div></div></div><div id="DF0884386DCF436DB0C7FBBBDEB82FAF" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 400px; height: 400px;"><div id="B85BD19F22744D4F8F76883E08304A06" class="bk-toolbar-wrapper" style="left: 370px; top: 28.964px; width: 30px; height: 371.036px;"><div class="bk-toolbar-right bk-toolbar-sticky"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div class="bk-button-bar-list" type="pan"><div id="4B78B5DFA98C42A086F9FF46274D3BE0" class="bk-toolbar-button bk-active"><div class="bk-btn-icon bk-tool-icon-pan"></div><span class="bk-tip">Pan</span></div></div><div class="bk-button-bar-list" type="scroll"><div id="AB52A4DEDDFF496B84D8819625A5FFBD" class="bk-toolbar-button"><div class="bk-btn-icon bk-tool-icon-wheel-zoom"></div><span class="bk-tip">Wheel Zoom</span></div></div><div class="bk-button-bar-list" type="pinch"></div><div class="bk-button-bar-list" type="tap"></div><div class="bk-button-bar-list" type="press"></div><div class="bk-button-bar-list" type="rotate"></div><div class="bk-button-bar-list" type="actions"><div id="ECAD8BCF1C304A5AB3C848DA63D69351" class="bk-toolbar-button"><div class="bk-btn-icon bk-tool-icon-reset"></div><span class="bk-tip">Reset</span></div><div id="8D1328A469F04EF6A631AC3F4D45EFF7" class="bk-toolbar-button"><div class="bk-btn-icon bk-tool-icon-save"></div><span class="bk-tip">Save</span></div></div><div class="bk-button-bar-list" type="inspectors"><div id="962150D17D4D48F49589A4A3EFC1C71D" class="bk-toolbar-button bk-active"><div class="bk-btn-icon bk-tool-icon-crosshair"></div><span class="bk-tip">Crosshair</span></div></div><div class="bk-button-bar-list" type="help"></div></div></div></div><div id="28DD6F55925D48108996DEB0C3A33DDE" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 400px; height: 400px;"><div id="B5D938351ABC41F68785E1AADA134001" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 400px; height: 400px;"><div class="bk-canvas-events"></div><div class="bk-canvas-overlays"><div id="E47B11B795794E3E87A46BB9B86A8E74" style="position: absolute; display: none;"></div><div id="AF9705E3CE4B45CD9FE0B609E38C1D4E" style="position: absolute; display: none;"></div></div><canvas class="bk-canvas" width="500" height="500" style="width: 400px; height: 400px;"></canvas></div></div></div></div></div>
+        </div>
+        
+        <script type="text/javascript">
+            (function(root, factory) {
+        //  if(typeof exports === 'object' && typeof module === 'object')
+        //    factory(require("Bokeh"));
+        //  else if(typeof define === 'function' && define.amd)
+        //    define(["Bokeh"], factory);
+        //  else if(typeof exports === 'object')
+        //    factory(require("Bokeh"));
+        //  else
+            factory(root["Bokeh"]);
+        })(this, function(Bokeh) {
+          var define;
+          return (function outer(modules, entry) {
+          if (Bokeh != null) {
+            return Bokeh.register_plugin(modules, {}, entry);
+          } else {
+            throw new Error("Cannot find Bokeh. You have to load it prior to loading plugins.");
+          }
+        })
+        ({
+          "custom/main": function(require, module, exports) {
+            var models = {
+              "Surface3d": require("custom/surface3d.surface3d").Surface3d
+            };
+            require("base").register_models(models);
+            module.exports = models;
+          },
+          "custom/surface3d.surface3d": function(require, module, exports) {
+        "use strict";
+        Object.defineProperty(exports, "__esModule", { value: true });
+        var OPTIONS, extend = function (child, parent) { for (var key in parent) {
+            if (hasProp.call(parent, key))
+                child[key] = parent[key];
+        } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; }, hasProp = {}.hasOwnProperty;
+        var p = require("core/properties");
+        var layout_dom_1 = require("models/layouts/layout_dom");
+        OPTIONS = {
+            width: '600px',
+            height: '600px',
+            style: 'surface',
+            showPerspective: true,
+            showGrid: true,
+            keepAspectRatio: true,
+            verticalRatio: 1.0,
+            legendLabel: 'stuff',
+            cameraPosition: {
+                horizontal: -0.35,
+                vertical: 0.22,
+                distance: 1.8
+            }
+        };
+        exports.Surface3dView = (function (superClass) {
+            extend(Surface3dView, superClass);
+            function Surface3dView() {
+                return Surface3dView.__super__.constructor.apply(this, arguments);
+            }
+            Surface3dView.prototype.initialize = function (options) {
+                Surface3dView.__super__.initialize.call(this, options);
+                this._graph = new vis.Graph3d(this.el, this.get_data(), this.model.options);
+                return this.connect(this.model.data_source.change, (function (_this) {
+                    return function () {
+                        return _this._graph.setData(_this.get_data());
+                    };
+                })(this));
+            };
+            Surface3dView.prototype.get_data = function () {
+                var data, i, j, ref, source;
+                data = new vis.DataSet();
+                source = this.model.data_source;
+                for (i = j = 0, ref = source.get_length(); 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+                    data.add({
+                        x: source.get_column(this.model.x)[i],
+                        y: source.get_column(this.model.y)[i],
+                        z: source.get_column(this.model.z)[i],
+                        style: source.get_column(this.model.color)[i]
+                    });
+                }
+                return data;
+            };
+            return Surface3dView;
+        })(layout_dom_1.LayoutDOMView);
+        exports.Surface3d = (function (superClass) {
+            extend(Surface3d, superClass);
+            function Surface3d() {
+                return Surface3d.__super__.constructor.apply(this, arguments);
+            }
+            Surface3d.prototype.default_view = exports.Surface3dView;
+            Surface3d.prototype.type = "Surface3d";
+            Surface3d.define({
+                x: [p.String],
+                y: [p.String],
+                z: [p.String],
+                color: [p.String],
+                data_source: [p.Instance],
+                options: [p.Any, OPTIONS]
+            });
+            return Surface3d;
+        })(layout_dom_1.LayoutDOM);
+        
+        }
+        }, "custom/main");
+        ;
+        });
+        (function() {
+          var fn = function() {
+            Bokeh.safely(function() {
+              (function(root) {
+                function embed_document(root) {
+                  var docs_json = {};
+                  var render_items = [{"elementid":"69e2439e-1c67-41ca-82f1-306a755c0945","sessionid":"lHfdABwOi1DmXS42SliQHrZwYkWFnpZFVkzyPZHxNCsV","use_for_title":true}];
+              
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                }
+              
+                if (root.Bokeh !== undefined) {
+                  embed_document(root);
+                } else {
+                  var attempts = 0;
+                  var timer = setInterval(function(root) {
+                    if (root.Bokeh !== undefined) {
+                      embed_document(root);
+                      clearInterval(timer);
+                    }
+                    attempts++;
+                    if (attempts > 100) {
+                      console.log("Bokeh: ERROR: Unable to embed document because BokehJS library is missing")
+                      clearInterval(timer);
+                    }
+                  }, 10, root)
+                }
+              })(window);
+            });
+          };
+          if (document.readyState != "loading") fn();
+          else document.addEventListener("DOMContentLoaded", fn);
+        })();
+        
+        </script>
+    
+</body></html>

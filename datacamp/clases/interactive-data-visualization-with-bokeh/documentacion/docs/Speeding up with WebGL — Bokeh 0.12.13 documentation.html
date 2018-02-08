@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html -->
+<html lang="en" class="wf-sourcesanspro-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  <title>Speeding up with WebGL — Bokeh 0.12.13 documentation</title>
+  <meta name="description" content="Bokeh visualization library, documentation site.">
+  <meta name="author" content="Bokeh contributors">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script async="" src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/analytics.js.descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/webfont.js.descarga"></script>
+  <link rel="stylesheet" href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/css" media="all"><script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/main.css">
+
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/jquery.min.js.descarga"></script>
+  <script type="text/javascript">
+    var _BOKEH_CURRENT_VERSION = "0.12.13";
+  </script>
+  <script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/main.js.descarga"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="https://bokeh.pydata.org/en/latest/_static/images/favicon.ico">
+
+  <!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="canonical" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html">
+
+<script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/jquery.min.js(1).descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.js.descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/katex.min.js.descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.js.descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.js.descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.js.descarga"></script><script src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-gl-0.12.13.min.js.descarga"></script></head>
+<body class="">
+
+  <header class="navigation">
+    <div class="wrapper">
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html" class="logo">
+        <img src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/logo.png" alt="Bokeh Logo">
+      </a>
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html" class="navigation-menu logo-text">Bokeh</a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Menu</a>
+      <nav>
+        <ul id="js-navigation-menu" class="navigation-menu">
+          
+              <li class="nav-link"><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/docs/gallery.html">Gallery</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/en/latest/">Docs</a></li>
+          
+              <li class="nav-link"><a href="https://github.com/bokeh/bokeh">Github</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="second-nav">
+    <nav>
+      <ul class="navigation-menu show">
+        <li class="nav-link more"><a href="https://bokeh.pydata.org/en/latest/index.html">0.12.13</a>
+            <ul class="submenu">
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.13/">0.12.13</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.12/">0.12.12</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.11/">0.12.11</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.10/">0.12.10</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.9/">0.12.9</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.7/">0.12.7</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.6/">0.12.6</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.11.0/">0.11.0</a></li>
+              
+            </ul>
+        </li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/user_guide.html" class="current">User Guide</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/gallery.html">Gallery</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.13.html">Releases</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <div class="search-bar">
+  <form role="search" action="https://bokeh.pydata.org/en/latest/search.html" method="get">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">
+      <img src="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/search-icon-black.png" alt="Search Icon">
+    </button>
+  </form>
+</div>
+    </div>
+  </div>
+
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+  <div class="docs section">
+    <div class="toc">
+      <ul class="current">
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide.html">User Guide</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html">Defining Key Concepts</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html">Plotting with Basic Glyphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html">Providing Data for Plots and Tables</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html">Laying out Plots and Widgets</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html">Handling Categorical Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html">Visualizing Network Graphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html">Mapping Geo Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html">Configuring Plot Tools</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html">Styling Visual Attributes</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html">Adding Annotations</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/interaction.html">Adding Interactions</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Running a Bokeh Server</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/notebook.html">Working in the Notebook</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/export.html">Exporting Plots</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/embed.html">Embedding Plots and Apps</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/cli.html">Using <code class="docutils literal"><span class="pre">bokeh</span></code> Commands</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/extensions.html">Extending Bokeh</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/compat.html">Leveraging Other Libraries</a></li>
+<li class="toctree-l1 current show"><a class="current reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#">Speeding up with WebGL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#what-is-webgl">What is WebGL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#how-to-enable-webgl">How to enable WebGL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/bokehjs.html">Developing with JavaScript</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/info.html">Learning More</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/0_bokeh.html">bokeh</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/application.html">bokeh.application</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/client.html">bokeh.client</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/colors.html">bokeh.colors</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/command.html">bokeh.command</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/core.html">bokeh.core</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/document.html">bokeh.document</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/driving.html">bokeh.driving</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/embed.html">bokeh.embed</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/events.html">bokeh.events</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/io.html">bokeh.io</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html">bokeh.layouts</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/model.html">bokeh.model</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html">bokeh.models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/palettes.html">bokeh.palettes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html">bokeh.plotting</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/protocol.html">bokeh.protocol</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/resources.html">bokeh.resources</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sampledata.html">bokeh.sampledata</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/server.html">bokeh.server</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/settings.html">bokeh.settings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sphinxext.html">bokeh.sphinxext</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/themes.html">bokeh.themes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html">bokeh.tile_providers</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html">bokeh.transform</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/util.html">bokeh.util</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/env_vars.html">Environment Variables</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/testing.html">Testing</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/documentation.html">Documentation</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/models.html">Bokeh Models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/server.html">Server Architecture</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bindings.html">Language Bindings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bokehjs.html">BokehJS</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.11.html">0.12.11 (Nov 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.10.html">0.12.10 (Oct 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.9.html">0.12.9 (Sep 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.7.html">0.12.7 (Aug 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.6.html">0.12.6 (Jun 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.5.html">0.12.5 (Mar 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.4.html">0.12.4 (Jan 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.3.html">0.12.3 (Oct 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.2.html">0.12.2 (Sept 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.1.html">0.12.1 (Jul 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.0.html">0.12.0 (Jun 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.1.html">0.11.1 (Feb 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.0.html">0.11.0 (Jan 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.10.0.html">0.10.0 (Sep 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.3.html">0.9.3 (Aug 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.2.html">0.9.2 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.1.html">0.9.1 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.0.html">0.9.0 (May 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.2.html">0.8.2 (Mar 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.1.html">0.8.1 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.0.html">0.8.0 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.1.html">0.7.1 (Jan 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.0.html">0.7.0 (Dec 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.1.html">0.6.1 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.0.html">0.6.0 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.2.html">0.5.2 (Aug 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.1.html">0.5.1 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.0.html">0.5.0 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.4.html">0.4.4 (Apr 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.2.html">0.4.2 (Mar 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.1.html">0.4.1 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.0.html">0.4.0 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.3.0.html">0.3.0 (Nov 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.2.0.html">0.2.0 (Oct 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.1.0.html">0.1.0 (Apr 2013)</a></li>
+</ul>
+
+    </div>
+    <div class="content">
+        
+  <div class="section" id="speeding-up-with-webgl">
+<span id="userguide-webgl"></span><h1>Speeding up with WebGL<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#speeding-up-with-webgl" title="Permalink to this headline">¶</a></h1>
+<p>When visualizing large datasets with Bokeh, the interaction can become
+rather slow. To counter this, one can enable WebGL, which allows
+rendering some glyph types on graphics hardware.</p>
+<div class="section" id="what-is-webgl">
+<h2>What is WebGL?<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#what-is-webgl" title="Permalink to this headline">¶</a></h2>
+<p>WebGL is a JavaScript API that allows rendering content in the browser
+via the Graphics Processing Unit (GPU), without the need for plugins.
+WebGL is standardized and available in all modern browsers.</p>
+</div>
+<div class="section" id="how-to-enable-webgl">
+<h2>How to enable WebGL<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#how-to-enable-webgl" title="Permalink to this headline">¶</a></h2>
+<p>To enable WebGL, set the plot’s <code class="docutils literal"><span class="pre">output_backend</span></code> property to <code class="docutils literal"><span class="pre">"webgl"</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Plot</span><span class="p">(</span><span class="n">output_backend</span><span class="o">=</span><span class="s2">"webgl"</span><span class="p">)</span>  <span class="c1"># for the glyph API</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">output_backend</span><span class="o">=</span><span class="s2">"webgl"</span><span class="p">)</span>  <span class="c1"># for the plotting API</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="support">
+<h2>Support<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#support" title="Permalink to this headline">¶</a></h2>
+<p>Only a subset of Bokeh’s objects are capable of rendering in WebGL.
+Currently supported are the circle and line glyphs, and all markers
+supported by <code class="docutils literal"><span class="pre">scatter()</span></code> (asterisk, circle, square, diamond, triangle,
+inverted_triangle, cross, circle_cross, square_cross, diamond_cross,
+x, square_x, circle_x). You can safely combine multiple glyphs in a
+plot, even if some are rendered in WebGL, and some are not.</p>
+<p>The performance improvements when using WebGL varies per situation. Due
+to overhead in some places of BokehJS, we can currently not benefit
+from the full speed that you might expect from WebGL. This is also
+something we plan to improve over time.</p>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#notes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Glyphs drawn using WebGL are drawn on top of glyphs that are not drawn
+in WebGL.</li>
+<li>When the scale is non-linear (e.g. log), the system falls back to 2D
+rendering.</li>
+<li>Making a selections of markers on Internet Explorer will reduce the size
+of the markers to 1 pixel (looks like a bug in IE).</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html#examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python" id="docs/user_guide/webgl.bokeh-plot-docs-user_guide-webgl-inline-a724df43c94b4b068e2daa4f2e66341f.js"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"scatter10k.html"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"scatter 10k points (no WebGL)"</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">output_backend</span><span class="o">=</span><span class="s2">"canvas"</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="750F54ED5B4C4746A4A91FC100D8C52E" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 600px;"><div id="DF263707130F437986CAC744B7EDFD84" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 600px;"><div id="A2B8EDE0CC80443A8DEB405EFAED3A85" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 600px; cursor: default;"><canvas class="bk-canvas" width="750" height="750" style="width: 600px; height: 600px;"></canvas><div class="bk-canvas-overlays"><div id="7D7C57FFD6A44CCF85EAAF646BBF5E6B" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="CC7762BCA2434314B604071D261F69E8" style="position: absolute; left: 570px; top: 5px; width: 30px; height: 571px; overflow: hidden;"><div id="C72CA1BB1F714204B8E102F9A3CE2A73" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="AFFE10D832B147E699D337C64D96F990" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="DD7761014C4E4D7F8D298D1C4ECF630E" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="A8B754B0AD834C10B6A7A7FA27504777" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="4D1BE9C15BEF41DEAE975B755232BA83" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="5FB3DC95A3EA46CEBAAAA024EE6466C6" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="0ECD82C2BFA348889236C64A85E03F85" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div></div><div class="highlight-python" id="docs/user_guide/webgl.bokeh-plot-docs-user_guide-webgl-inline-04da06e0d0834629a7038da19d8f6dc7.js"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"scatter10k.html"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"scatter 10k points (with WebGL)"</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">output_backend</span><span class="o">=</span><span class="s2">"webgl"</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="920329EA353849F197AA0B44ED5316B7" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 600px;"><div id="7EA8446F079F43CF83F97D50AC378191" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 600px;"><div id="8B74720B7F9142688F83623299997592" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 600px;"><canvas class="bk-canvas" width="750" height="750" style="width: 600px; height: 600px;"></canvas><div class="bk-canvas-overlays"><div id="F46A5FC23973471CB6288D8455F35619" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="DA22690E909342189A9EFE745CDF9712" style="position: absolute; left: 570px; top: 5px; width: 30px; height: 571px; overflow: hidden;"><div id="6B5E55675B0144A2990A15499A3D233B" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="6EB0812E094C454BAFB7355D8D9473B6" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="7E5BDADB66A5485B84EF6CC7B9D55E33" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="8BEFBA52BBA14350925C40E66236D152" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="9277E611010C497F91F146CBFA2412C1" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="A1A009963BCC452F80BA342AB81762D0" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="C17CD7B3032C45B19A4C756E1EDEFA81" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div></div><div class="highlight-python" id="docs/user_guide/webgl.bokeh-plot-docs-user_guide-webgl-inline-aaa0a12cf00e4aaab4e15545a2407315.js"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mf">1.25</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="p">))</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"line10k.html"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"line10k.py example"</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"A line consisting of 10k points"</span><span class="p">,</span> <span class="n">output_backend</span><span class="o">=</span><span class="s2">"webgl"</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"#22aa22"</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="F84599FDAD4D4EFBB19762C6036227F3" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 600px;"><div id="C167F79471BB45958845A4252A4F9FE4" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 600px;"><div id="450AD2AC34D5440484BAD0241D325BAA" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 600px;"><canvas class="bk-canvas" width="750" height="750" style="width: 600px; height: 600px;"></canvas><div class="bk-canvas-overlays"><div id="3BDA00F743CB42D0948EE1D5F9B10625" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="88839088570A4A7AB087637DC702264C" style="position: absolute; left: 570px; top: 29px; width: 30px; height: 547px; overflow: hidden;"><div id="D312D5541D98425183684513A3C168AD" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="22236CBD6B5C406E886593923170E883" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="2DA88C85ABA348D29647306DFF620C62" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="2FC80FC714CF40E9A219F72AD9E0B44C" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="0C3AD4DE6D254F8399AD4207A4613E96" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="5731E036F24F4B09BC8BF14907D6C4E7" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="696019F3FB624C4FAF173BD87A7942F0" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div></div></div>
+</div>
+
+
+    </div>
+  </div>
+
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+
+<footer class="footer">
+  <div class="footer-links">
+    <ul>
+      <li><span class="footer-title">About Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/team.html">Team</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/contact.html">Contact</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Links</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/faqs.html">FAQs</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/technical-vision.html">Technical vision</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/roadmap.html">Roadmap</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/citation.html">Citation</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Join Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/contribute.html">Contribute</a></li>
+      
+          <li><a href="https://groups.google.com/a/anaconda.com/forum/#!forum/bokeh">Mailing list</a></li>
+      
+          <li><a href="https://github.com/bokeh/bokeh">Github</a></li>
+      
+          <li><a href="https://twitter.com/BokehPlots">Twitter</a></li>
+      
+          <li><a href="https://www.youtube.com/channel/UCK0rSk29mmg4UT4bIOvPYhw">YouTube</a></li>
+      
+    </ul>
+    <ul class="copyright">
+      <li>© Copyright 2015, Anaconda.</li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-7', 'pydata.org');
+  ga('send', 'pageview');
+</script>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Speeding up with WebGL — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"></body></html>

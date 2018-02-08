@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://bokeh.pydata.org/en/latest/docs/user_guide/data.html -->
+<html lang="en" class="wf-sourcesanspro-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  <title>Providing Data for Plots and Tables — Bokeh 0.12.13 documentation</title>
+  <meta name="description" content="Bokeh visualization library, documentation site.">
+  <meta name="author" content="Bokeh contributors">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script async="" src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/analytics.js.descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/webfont.js.descarga"></script>
+  <link rel="stylesheet" href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/css" media="all"><script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/main.css">
+
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/jquery.min.js.descarga"></script>
+  <script type="text/javascript">
+    var _BOKEH_CURRENT_VERSION = "0.12.13";
+  </script>
+  <script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/main.js.descarga"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="https://bokeh.pydata.org/en/latest/_static/images/favicon.ico">
+
+  <!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="canonical" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html">
+
+<script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/jquery.min.js(1).descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.js.descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/katex.min.js.descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.js.descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.js.descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.js.descarga"></script><script src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-gl-0.12.13.min.js.descarga"></script></head>
+<body class="">
+
+  <header class="navigation">
+    <div class="wrapper">
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html" class="logo">
+        <img src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/logo.png" alt="Bokeh Logo">
+      </a>
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html" class="navigation-menu logo-text">Bokeh</a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Menu</a>
+      <nav>
+        <ul id="js-navigation-menu" class="navigation-menu">
+          
+              <li class="nav-link"><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/docs/gallery.html">Gallery</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/en/latest/">Docs</a></li>
+          
+              <li class="nav-link"><a href="https://github.com/bokeh/bokeh">Github</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="second-nav">
+    <nav>
+      <ul class="navigation-menu show">
+        <li class="nav-link more"><a href="https://bokeh.pydata.org/en/latest/index.html">0.12.13</a>
+            <ul class="submenu">
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.13/">0.12.13</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.12/">0.12.12</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.11/">0.12.11</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.10/">0.12.10</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.9/">0.12.9</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.7/">0.12.7</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.6/">0.12.6</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.11.0/">0.11.0</a></li>
+              
+            </ul>
+        </li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/user_guide.html" class="current">User Guide</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/gallery.html">Gallery</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.13.html">Releases</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <div class="search-bar">
+  <form role="search" action="https://bokeh.pydata.org/en/latest/search.html" method="get">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">
+      <img src="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/search-icon-black.png" alt="Search Icon">
+    </button>
+  </form>
+</div>
+    </div>
+  </div>
+
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+  <div class="docs section">
+    <div class="toc">
+      <ul class="current">
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide.html">User Guide</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html">Defining Key Concepts</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html">Plotting with Basic Glyphs</a></li>
+<li class="toctree-l1 current show"><a class="current reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#">Providing Data for Plots and Tables</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#providing-data-directly">Providing data directly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#columndatasource">ColumnDataSource</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#streaming">Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#patching">Patching</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#filtering-data-with-cdsview">Filtering data with CDSView</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#indexfilter">IndexFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#booleanfilter">BooleanFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#groupfilter">GroupFilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#customjsfilter">CustomJSFilter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#javascript">Javascript</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#coffeescript">Coffeescript</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#linked-selection">Linked selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#linked-selection-with-filtered-data">Linked selection with filtered data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#other-data-types">Other Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html">Laying out Plots and Widgets</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html">Handling Categorical Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html">Visualizing Network Graphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html">Mapping Geo Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html">Configuring Plot Tools</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html">Styling Visual Attributes</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html">Adding Annotations</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/interaction.html">Adding Interactions</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Running a Bokeh Server</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/notebook.html">Working in the Notebook</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/export.html">Exporting Plots</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/embed.html">Embedding Plots and Apps</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/cli.html">Using <code class="docutils literal"><span class="pre">bokeh</span></code> Commands</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/extensions.html">Extending Bokeh</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/compat.html">Leveraging Other Libraries</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html">Speeding up with WebGL</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/bokehjs.html">Developing with JavaScript</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/info.html">Learning More</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/0_bokeh.html">bokeh</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/application.html">bokeh.application</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/client.html">bokeh.client</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/colors.html">bokeh.colors</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/command.html">bokeh.command</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/core.html">bokeh.core</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/document.html">bokeh.document</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/driving.html">bokeh.driving</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/embed.html">bokeh.embed</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/events.html">bokeh.events</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/io.html">bokeh.io</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html">bokeh.layouts</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/model.html">bokeh.model</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html">bokeh.models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/palettes.html">bokeh.palettes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html">bokeh.plotting</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/protocol.html">bokeh.protocol</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/resources.html">bokeh.resources</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sampledata.html">bokeh.sampledata</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/server.html">bokeh.server</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/settings.html">bokeh.settings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sphinxext.html">bokeh.sphinxext</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/themes.html">bokeh.themes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html">bokeh.tile_providers</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html">bokeh.transform</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/util.html">bokeh.util</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/env_vars.html">Environment Variables</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/testing.html">Testing</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/documentation.html">Documentation</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/models.html">Bokeh Models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/server.html">Server Architecture</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bindings.html">Language Bindings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bokehjs.html">BokehJS</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.11.html">0.12.11 (Nov 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.10.html">0.12.10 (Oct 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.9.html">0.12.9 (Sep 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.7.html">0.12.7 (Aug 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.6.html">0.12.6 (Jun 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.5.html">0.12.5 (Mar 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.4.html">0.12.4 (Jan 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.3.html">0.12.3 (Oct 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.2.html">0.12.2 (Sept 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.1.html">0.12.1 (Jul 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.0.html">0.12.0 (Jun 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.1.html">0.11.1 (Feb 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.0.html">0.11.0 (Jan 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.10.0.html">0.10.0 (Sep 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.3.html">0.9.3 (Aug 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.2.html">0.9.2 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.1.html">0.9.1 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.0.html">0.9.0 (May 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.2.html">0.8.2 (Mar 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.1.html">0.8.1 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.0.html">0.8.0 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.1.html">0.7.1 (Jan 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.0.html">0.7.0 (Dec 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.1.html">0.6.1 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.0.html">0.6.0 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.2.html">0.5.2 (Aug 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.1.html">0.5.1 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.0.html">0.5.0 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.4.html">0.4.4 (Apr 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.2.html">0.4.2 (Mar 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.1.html">0.4.1 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.0.html">0.4.0 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.3.0.html">0.3.0 (Nov 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.2.0.html">0.2.0 (Oct 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.1.0.html">0.1.0 (Apr 2013)</a></li>
+</ul>
+
+    </div>
+    <div class="content">
+        
+  <div class="section" id="providing-data-for-plots-and-tables">
+<span id="userguide-data"></span><h1>Providing Data for Plots and Tables<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#providing-data-for-plots-and-tables" title="Permalink to this headline">¶</a></h1>
+<p>No data visualization is possible without the underlying data to be represented.
+In this section, the various ways of providing data for plots is explained, from
+passing data values directly to creating a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> and filtering using
+a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.CDSView" title="bokeh.models.sources.CDSView"><code class="xref py py-class docutils literal"><span class="pre">CDSView</span></code></a>.</p>
+<div class="section" id="providing-data-directly">
+<h2>Providing data directly<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#providing-data-directly" title="Permalink to this headline">¶</a></h2>
+<p>In Bokeh, it is possible to pass lists of values directly into plotting functions.
+In the example below, the data, <code class="docutils literal"><span class="pre">x_values</span></code> and <code class="docutils literal"><span class="pre">y_values</span></code>, are passed directly
+to the <code class="docutils literal"><span class="pre">circle</span></code> plotting method (see <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#userguide-plotting"><span class="std std-ref">Plotting with Basic Glyphs</span></a> for more examples).</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">x_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_values</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When you pass in data like this, Bokeh works behind the scenes to make a
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> for you. But learning to create and use the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a>
+will enable you access more advanced capabilites, such as streaming data,
+sharing data between plots, and filtering data.</p>
+</div>
+<div class="section" id="columndatasource">
+<h2>ColumnDataSource<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#columndatasource" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> is the core of most Bokeh plots, providing the data
+that is visualized by the glyphs of the plot. With the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a>,
+it is easy to share data between multiple plots and widgets, such as the
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/widgets.tables.html#bokeh.models.widgets.tables.DataTable" title="bokeh.models.widgets.tables.DataTable"><code class="xref py py-class docutils literal"><span class="pre">DataTable</span></code></a>. When the same <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> is used to drive multiple
+renderers, selections of the data source are also shared. Thus it is possible
+to use a select tool to choose data points from one plot and have them automatically
+highlighted in a second plot (<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#userguide-data-linked-selection"><span class="std std-ref">Linked selection</span></a>).</p>
+<p>At the most basic level, a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> is simply a mapping between column
+names and lists of data. The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> takes a <code class="docutils literal"><span class="pre">data</span></code> parameter which is a dict,
+with string column names as keys and lists (or arrays) of data values as values. If one positional
+argument is passed in to the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> initializer, it will be taken as <code class="docutils literal"><span class="pre">data</span></code>. Once the
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> has been created, it can be passed into the <code class="docutils literal"><span class="pre">source</span></code> parameter of
+plotting methods which allows you to pass a column’s name as a stand in for the data values:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'x_values'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s1">'y_values'</span><span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]}</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'x_values'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'y_values'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">data</span></code> parameter can also be a Pandas <code class="docutils literal"><span class="pre">DataFrame</span></code> or <code class="docutils literal"><span class="pre">GroupBy</span></code> object.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If a <code class="docutils literal"><span class="pre">DataFrame</span></code> is used, the CDS will have columns corresponding to the columns of
+the <code class="docutils literal"><span class="pre">DataFrame</span></code>. If the <code class="docutils literal"><span class="pre">DataFrame</span></code> has a named index column, then CDS will also have
+a column with this name. However, if the index name (or any subname of a <code class="docutils literal"><span class="pre">MultiIndex</span></code>)
+is <code class="docutils literal"><span class="pre">None</span></code>, then the CDS will have a column generically named <code class="docutils literal"><span class="pre">index</span></code> for the index.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">((</span><span class="s1">'colA'</span><span class="p">,</span> <span class="s1">'ColB'</span><span class="p">))</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If a <code class="docutils literal"><span class="pre">GroupBy</span></code> object is used, the CDS will have columns corresponding to the result of
+calling <code class="docutils literal"><span class="pre">group.describe()</span></code>. The <code class="docutils literal"><span class="pre">describe</span></code> method generates columns for statistical measures
+such as <code class="docutils literal"><span class="pre">mean</span></code> and <code class="docutils literal"><span class="pre">count</span></code> for all the non-grouped orginal columns. The CDS columns are
+formed by joining original column names with the computed measure. For example, if a
+<code class="docutils literal"><span class="pre">DataFrame</span></code> has columns <code class="docutils literal"><span class="pre">'year'</span></code> and <code class="docutils literal"><span class="pre">'mpg'</span></code>. Then passing <code class="docutils literal"><span class="pre">df.groupby('year')</span></code>
+to a CDS will result in columns such as <code class="docutils literal"><span class="pre">'mpg_mean'</span></code></p>
+<p>Note this capability to adapt <code class="docutils literal"><span class="pre">GroupBy</span></code> objects may only work with Pandas <code class="docutils literal"><span class="pre">&gt;=0.20.0</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is an implicit assumption that all the columns in a given <code class="docutils literal"><span class="pre">ColumnDataSource</span></code>
+all have the same length at all times. For this reason, it is usually preferable to
+update the <code class="docutils literal"><span class="pre">.data</span></code> property of a data source “all at once”.</p>
+</div>
+<div class="section" id="streaming">
+<h3>Streaming<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#streaming" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> streaming is an efficient way to append new data to a CDS. By using the
+<code class="docutils literal"><span class="pre">stream</span></code> method, Bokeh only sends new data to the browser instead of the entire dataset.
+The <code class="docutils literal"><span class="pre">stream</span></code> method takes a <code class="docutils literal"><span class="pre">new_data</span></code> parameter containing a dict mapping column names
+to sequences of data to be appended to the respective columns. It additionally takes an optional
+argument <code class="docutils literal"><span class="pre">rollover</span></code>, which is the maximum length of data to keep (data from the beginning of the
+column will be discarded). The default <code class="docutils literal"><span class="pre">rollover</span></code> value of None allows data to grow unbounded.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">foo</span><span class="o">=</span><span class="p">[],</span> <span class="n">bar</span><span class="o">=</span><span class="p">[]))</span>
+
+<span class="c1"># has new, identical-length updates for all columns in source</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'foo'</span> <span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span>
+    <span class="s1">'bar'</span> <span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">source</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For an example that uses streaming, see <a class="reference external" href="https://github.com/bokeh/bokeh/tree/0.12.13/examples/app/ohlc">examples/app/ohlc</a>.</p>
+</div>
+<div class="section" id="patching">
+<h3>Patching<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#patching" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> patching is an efficient way to update slices of a data source. By using the
+<code class="docutils literal"><span class="pre">patch</span></code> method, Bokeh only needs to send new data to the browser instead of the entire dataset.
+The <code class="docutils literal"><span class="pre">patch</span></code> method should be passed a dict mapping column names to list of tuples that represent
+a patch change to apply.</p>
+<p>The tuples that describe patch changes are of the form:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">new_value</span><span class="p">)</span>  <span class="c1"># replace a single column value</span>
+
+<span class="c1"># or</span>
+
+<span class="p">(</span><span class="nb">slice</span><span class="p">,</span> <span class="n">new_values</span><span class="p">)</span> <span class="c1"># replace several column values</span>
+</pre></div>
+</div>
+<p>For a full example, see <a class="reference external" href="https://github.com/bokeh/bokeh/tree/0.12.13/examples/howto/patch_app.py">examples/howto/patch_app.py</a>.</p>
+</div>
+</div>
+<div class="section" id="filtering-data-with-cdsview">
+<h2>Filtering data with CDSView<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#filtering-data-with-cdsview" title="Permalink to this headline">¶</a></h2>
+<p>It’s often desirable to focus in on a portion of data that has been subsampled or filtered
+from a larger dataset. Bokeh allows you to specify a view of a data source that represents
+a subset of data. By having a view of the data source, the underlying data doesn’t need to
+be changed and can be shared across plots. The view consists of one or more filters that
+select the rows of the data source that should be bound to a specific glyph.</p>
+<p>To plot with a subset of data, you can create a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.CDSView" title="bokeh.models.sources.CDSView"><code class="xref py py-class docutils literal"><span class="pre">CDSView</span></code></a> and pass it in as a <code class="docutils literal"><span class="pre">view</span></code>
+argument to the renderer-adding methods on the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure" title="bokeh.plotting.figure.Figure"><code class="xref py py-class docutils literal"><span class="pre">Figure</span></code></a>, such as <code class="docutils literal"><span class="pre">figure.circle</span></code>. The
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.CDSView" title="bokeh.models.sources.CDSView"><code class="xref py py-class docutils literal"><span class="pre">CDSView</span></code></a> has two properties, <code class="docutils literal"><span class="pre">source</span></code> and <code class="docutils literal"><span class="pre">filters</span></code>. <code class="docutils literal"><span class="pre">source</span></code> is the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a>
+that the view is associated with. <code class="docutils literal"><span class="pre">filters</span></code> is a list of <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.Filter" title="bokeh.models.filters.Filter"><code class="xref py py-class docutils literal"><span class="pre">Filter</span></code></a> objects, listed and
+described below.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">CDSView</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">CDSView</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="n">filter1</span><span class="p">,</span> <span class="n">filter2</span><span class="p">])</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="indexfilter">
+<h3>IndexFilter<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#indexfilter" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.IndexFilter" title="bokeh.models.filters.IndexFilter"><code class="xref py py-class docutils literal"><span class="pre">IndexFilter</span></code></a> is the simplest filter type. It has an <code class="docutils literal"><span class="pre">indices</span></code> property which is a
+list of integers that are the indices of the data you want to be included in the plot.</p>
+<div class="highlight-python" id="docs/user_guide/data.bokeh-plot-docs-user_guide-data-inline-570bca69dca5496c89be2ba13617b30c.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">CDSView</span><span class="p">,</span> <span class="n">IndexFilter</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"index_filter.html"</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">CDSView</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="n">IndexFilter</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])])</span>
+
+<span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"box_select"</span><span class="p">,</span> <span class="s2">"hover"</span><span class="p">,</span> <span class="s2">"reset"</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hover_color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p_filtered</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">)</span>
+<span class="n">p_filtered</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hover_color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">gridplot</span><span class="p">([[</span><span class="n">p</span><span class="p">,</span> <span class="n">p_filtered</span><span class="p">]]))</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="F30493C8067B490C810489459D27DC40" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 330px;"><div id="4D00FCA7E0004030A0918F21FE5F8C6F" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 600px; height: 30px;"><div id="736C0C6565594DB4B75512B82525E3B8" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="3447DDF5F1B142B0839C666485C9B06E" class="bk-toolbar-button bk-tool-icon-box-select bk-active" title="Box Select"></div></div><div class="bk-button-bar"><div id="57EB5D1E9D1E44618631418C14EEFEF9" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div></div></div><div id="1E15FC371BBE4C5C844A9B9DBD268368" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="98469D79907647E7BF5C246F78C1DB4E" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="4412688C195A411398061F1EBCA3371D" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="112616F3F1E54CC2A0AC99970A8A12D6" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="203E9CD4308348FBAB9B7009AE9FBFDD" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="293F78DC92AA45B299362CB054DCFD18" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="AAD731EAED5D410688389D5434C7F270" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="33BBADCB9C9F49B3A34DA432633E9A7D" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="17D036EB730245639B0783A0DAF34713" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="860DE8D8CCB14453B5B0216B6CF34CB9" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div></div>
+<div class="section" id="booleanfilter">
+<h3>BooleanFilter<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#booleanfilter" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.BooleanFilter" title="bokeh.models.filters.BooleanFilter"><code class="xref py py-class docutils literal"><span class="pre">BooleanFilter</span></code></a> selects rows from a data source through a list of True or False values
+in its <code class="docutils literal"><span class="pre">booleans</span></code> property.</p>
+<div class="highlight-python" id="docs/user_guide/data.bokeh-plot-docs-user_guide-data-inline-f87d5d38b9c649cb98e199dca90116b0.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">CDSView</span><span class="p">,</span> <span class="n">BooleanFilter</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"boolean_filter.html"</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]))</span>
+<span class="n">booleans</span> <span class="o">=</span> <span class="p">[</span><span class="bp">True</span> <span class="k">if</span> <span class="n">y_val</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="bp">False</span> <span class="k">for</span> <span class="n">y_val</span> <span class="ow">in</span> <span class="n">source</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">'y'</span><span class="p">]]</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">CDSView</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="n">BooleanFilter</span><span class="p">(</span><span class="n">booleans</span><span class="p">)])</span>
+
+<span class="n">tools</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"box_select"</span><span class="p">,</span> <span class="s2">"hover"</span><span class="p">,</span> <span class="s2">"reset"</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hover_color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p_filtered</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+                    <span class="n">x_range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="p">)</span>
+<span class="n">p_filtered</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hover_color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">gridplot</span><span class="p">([[</span><span class="n">p</span><span class="p">,</span> <span class="n">p_filtered</span><span class="p">]]))</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="A86B650E4F0A43C7949F23366E07F216" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 330px;"><div id="C88B9EB111174013A5FA9EFB67BBB34A" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 600px; height: 30px;"><div id="76A14BA120A14124ADBB3BCED43B9777" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="667713016DD04A9CAFDF1E033F80F1EF" class="bk-toolbar-button bk-tool-icon-box-select bk-active" title="Box Select"></div></div><div class="bk-button-bar"><div id="F73BD641E0644AAAB71DCE1D3C38CD20" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div></div></div><div id="C17B6CAE5FD6420B8FEE861C455E8FD7" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="0BCFF902C2854EF895BB2C04A95393FC" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="A65CAF633E0645A6B3F5CDE355A550B5" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="8176C1AE86614F809A3248AC455A5A01" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="C2A8A2C5033D445783C51D9EBC1F521C" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="5E2C9560A2764DA59929F69F0414D609" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="991A7370729F48EC957E8E37FFE02444" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="7D54E674853D42A39DB7ED87FB4F5EC4" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="3872206D8E784AE891CAA4D0F7B10624" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="2257D712D416462BBE86A63EED733064" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div></div>
+<div class="section" id="groupfilter">
+<h3>GroupFilter<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#groupfilter" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.GroupFilter" title="bokeh.models.filters.GroupFilter"><code class="xref py py-class docutils literal"><span class="pre">GroupFilter</span></code></a> allows you to select rows from a dataset that have a specific value for
+a categorical variable. The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.GroupFilter" title="bokeh.models.filters.GroupFilter"><code class="xref py py-class docutils literal"><span class="pre">GroupFilter</span></code></a> has two properties, <code class="docutils literal"><span class="pre">column_name</span></code>, the name of
+column in the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a>, and <code class="docutils literal"><span class="pre">group</span></code>, the value of the column to select for.</p>
+<p>In the example below, <code class="docutils literal"><span class="pre">flowers</span></code> contains a categorical variable <code class="docutils literal"><span class="pre">species</span></code> which is
+either <code class="docutils literal"><span class="pre">setosa</span></code>, <code class="docutils literal"><span class="pre">versicolor</span></code>, or <code class="docutils literal"><span class="pre">virginica</span></code>.</p>
+<div class="highlight-python" id="docs/user_guide/data.bokeh-plot-docs-user_guide-data-inline-853408a2dcc5419986ee41ac5ca85c2c.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">CDSView</span><span class="p">,</span> <span class="n">GroupFilter</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.iris</span> <span class="kn">import</span> <span class="n">flowers</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"group_filter.html"</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">flowers</span><span class="p">)</span>
+<span class="n">view1</span> <span class="o">=</span> <span class="n">CDSView</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="n">GroupFilter</span><span class="p">(</span><span class="n">column_name</span><span class="o">=</span><span class="s1">'species'</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">'versicolor'</span><span class="p">)])</span>
+
+<span class="n">plot_size_and_tools</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'plot_height'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s1">'plot_width'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+                        <span class="s1">'tools'</span><span class="p">:[</span><span class="s1">'box_select'</span><span class="p">,</span> <span class="s1">'reset'</span><span class="p">,</span> <span class="s1">'help'</span><span class="p">]}</span>
+
+<span class="n">p1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Full data set"</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_size_and_tools</span><span class="p">)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'petal_length'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'petal_width'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
+
+<span class="n">p2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Setosa only"</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">x_range</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="n">p1</span><span class="o">.</span><span class="n">y_range</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_size_and_tools</span><span class="p">)</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'petal_length'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'petal_width'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">gridplot</span><span class="p">([[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">]]))</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="2FC41EAF11C7404EAFC2151E965DF85F" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 330px;"><div id="28DFEB1156534AA89AB09B68FE9C5FD0" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 600px; height: 30px;"><div id="8BFBEFA191E2450EA9A2D6B8E0A1578E" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="8AA4EB3209B044CD8B126211B7AFFF36" class="bk-toolbar-button bk-tool-icon-box-select bk-active" title="Box Select"></div></div><div class="bk-button-bar"><div id="E589A7B8CEDB49D38B5F5A62C7F07E6D" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="F3B05CE6607E441B9DE38303AFD6666D" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div><div id="F35017CC761A48E8AA1BB86748A9CBCE" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="A991C67F769247CB99733D3229209760" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="3A76B4C62D04436EA2EAD8BD60444A0E" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="4341CD0B1C9D43F18E9AE35A09560ABE" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="38943CEC78C041E4AFFBEF5B9D7EA813" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="AA386C51EEC3489F86FD913190191B3B" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="FA2D74C7F67542F8A79ADB8AA7397E39" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="8F14C3EFDE1C44CC80123F661387B71D" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="660230D24A414E96B647982C756BB064" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="FAC10BEE48AF4F6D8EEE7B18B41E5EC1" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div></div>
+<div class="section" id="customjsfilter">
+<h3>CustomJSFilter<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#customjsfilter" title="Permalink to this headline">¶</a></h3>
+<p>You can also create a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.CustomJSFilter" title="bokeh.models.filters.CustomJSFilter"><code class="xref py py-class docutils literal"><span class="pre">CustomJSFilter</span></code></a> with your own functionality. To do this, use JavaScript
+or CoffeeScript to write code that returns either a list of indices or a list of
+booleans that represents the filtered subset. The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> that is associated
+with the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.CDSView" title="bokeh.models.sources.CDSView"><code class="xref py py-class docutils literal"><span class="pre">CDSView</span></code></a> this filter is added to will be available at render time with the
+variable <code class="docutils literal"><span class="pre">source</span></code>.</p>
+<div class="section" id="javascript">
+<h4>Javascript<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#javascript" title="Permalink to this headline">¶</a></h4>
+<p>To create a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/filters.html#bokeh.models.filters.CustomJSFilter" title="bokeh.models.filters.CustomJSFilter"><code class="xref py py-class docutils literal"><span class="pre">CustomJSFilter</span></code></a> with custom functionality written in JavaScript,
+pass in the JavaScript code as a string to the parameter <code class="docutils literal"><span class="pre">code</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">custom_filter</span> <span class="o">=</span> <span class="n">CustomJSFilter</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">'''</span>
+<span class="s1">var indices = [];</span>
+
+<span class="s1">// iterate through rows of data source and see if each satisfies some constraint</span>
+<span class="s1">for (var i = 0; i &lt;= source.get_length(); i++){</span>
+<span class="s1">    if (source.data['some_column'][i] == 'some_value'){</span>
+<span class="s1">        indices.push(true);</span>
+<span class="s1">    } else {</span>
+<span class="s1">        indices.push(false);</span>
+<span class="s1">    }</span>
+<span class="s1">}</span>
+<span class="s1">return indices;</span>
+<span class="s1">'''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="coffeescript">
+<h4>Coffeescript<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#coffeescript" title="Permalink to this headline">¶</a></h4>
+<p>You can also write code for the <code class="docutils literal"><span class="pre">CustomJSFilter</span></code> in <a class="reference external" href="http://coffeescript.org/">CoffeeScript</a>, and
+use the <code class="docutils literal"><span class="pre">from_coffeescript</span></code> class method, which accepts the <code class="docutils literal"><span class="pre">code</span></code> parameter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">custom_filter_coffee</span> <span class="o">=</span> <span class="n">CustomJSFilter</span><span class="o">.</span><span class="n">from_coffeescript</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="s1">'''</span>
+<span class="s1">z = source.data['z']</span>
+<span class="s1">indices = (i for i in [0...source.get_length()] when z[i] == 'b')</span>
+<span class="s1">return indices</span>
+<span class="s1">'''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="linked-selection">
+<span id="userguide-data-linked-selection"></span><h2>Linked selection<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#linked-selection" title="Permalink to this headline">¶</a></h2>
+<p>Using the same <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a> in the two plots below allows their selections to be
+shared.</p>
+<div class="highlight-python" id="docs/user_guide/data.bokeh-plot-15951c50a5b1476587b8fa1a6c8f1853.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"brushing.html"</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="n">xx</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># create a column data source for the plots to share</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">y1</span><span class="p">))</span>
+
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="s2">"box_select,lasso_select,help"</span>
+
+<span class="c1"># create a new plot and add a renderer</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">TOOLS</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">left</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y0'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="c1"># create another new plot and add a renderer</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">TOOLS</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">right</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y1'</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">]])</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="FA7821EE90E844F0BF37117DBADE3F84" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 330px;"><div id="5A3C65C4FDA8478D8D3EF5A69EE8BCFF" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 600px; height: 30px;"><div id="796674FCB7FB4BF09CB54E21BB0DBF36" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="AECD0D77457A4D5693CDF8B58EF302E7" class="bk-toolbar-button bk-tool-icon-box-select bk-active" title="Box Select"></div><div id="FB894E99898842CD96E99EAA9C907487" class="bk-toolbar-button bk-tool-icon-lasso-select" title="Lasso Select"></div></div><div class="bk-button-bar"><div id="1B161F229FE145DF84AEAF12F78ABDF2" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div><div id="BCA8BECE7A0D4EB59F864ED23E1B9760" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="11A4C673BF694091A1BD7A079D774F04" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="2EA9CC0A17A44D789288A5A845AF484F" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="6DD1F0206CF247FCBC208629191C7CD3" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="1AB49CD81F80410E9E786768F0F5DEAF" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="04D3E79ADCBB4A35B175590565CD0D09" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="6DA79E22529741CD8A12854F1416E87A" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="3EAFB5988E014A09805CE4197AAECBA3" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="9667E7F6DE774F9399D2A3C94F9694B8" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="121EC77E50C0448C9C814ADEF39EDDCC" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div></div>
+<div class="section" id="linked-selection-with-filtered-data">
+<span id="userguide-data-linked-selection-with-filtering"></span><h2>Linked selection with filtered data<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#linked-selection-with-filtered-data" title="Permalink to this headline">¶</a></h2>
+<p>With the ability to specify a subset of data to be used for each glyph renderer, it is
+easy to share data between plots even when the plots use different subsets of data.
+By using the same <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.ColumnDataSource" title="bokeh.models.sources.ColumnDataSource"><code class="xref py py-class docutils literal"><span class="pre">ColumnDataSource</span></code></a>, selections and hovered inspections of that data source
+are automatically shared.</p>
+<p>In the example below, a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/sources.html#bokeh.models.sources.CDSView" title="bokeh.models.sources.CDSView"><code class="xref py py-class docutils literal"><span class="pre">CDSView</span></code></a> is created for the second plot that specifies the subset
+of data in which the y values are either greater than 250 or less than 100. Selections in either
+plot are automatically reflected in the other. And hovering on a point in one plot will highlight
+the corresponding point in the other plot if it exists.</p>
+<div class="highlight-python" id="docs/user_guide/data.bokeh-plot-11797435f51b4929801383a64875cce5.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">CDSView</span><span class="p">,</span> <span class="n">BooleanFilter</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"linked_selection_subsets.html"</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="n">xx</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># create a column data source for the plots to share</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">y1</span><span class="p">))</span>
+
+<span class="c1"># create a view of the source for one plot to use</span>
+<span class="n">view</span> <span class="o">=</span> <span class="n">CDSView</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="n">BooleanFilter</span><span class="p">([</span><span class="bp">True</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">250</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">else</span> <span class="bp">False</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y1</span><span class="p">])])</span>
+
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="s2">"box_select,lasso_select,hover,help"</span>
+
+<span class="c1"># create a new plot and add a renderer</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">TOOLS</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">left</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y0'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hover_color</span><span class="o">=</span><span class="s2">"firebrick"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="c1"># create another new plot, add a renderer that uses the view of the data source</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">TOOLS</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">right</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y1'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hover_color</span><span class="o">=</span><span class="s2">"firebrick"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="n">view</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">]])</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="7DDF2F7E9EA24818ACF35668140222DC" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 330px;"><div id="A95CE7E3CDD348A899C278275F242BC8" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 600px; height: 30px;"><div id="20D145CC6C4A48EFBAD3EDF4911400AD" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="8411CD7B16734D96B4BC0619CCD0BE0A" class="bk-toolbar-button bk-tool-icon-box-select bk-active" title="Box Select"></div><div id="EDE34C5565ED4405BF0E62CDEC3DFAAF" class="bk-toolbar-button bk-tool-icon-lasso-select" title="Lasso Select"></div></div><div class="bk-button-bar"><div id="FD469485E1F9412B96BD5153BA29BEB6" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div><div id="82B16304ECDA4EEAB406EC529D29F512" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="7560A9187F97475790E0351B6FC236EE" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 600px; height: 300px;"><div id="2F12B45A4D16477C97C2FF61606F977E" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="771A479E30E9411BA510F48BEDF369E2" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="F97392F96CB24FCCB5E7D01E6B34AB22" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="0D2E6969672A4D20A873B458D940B9F0" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="32B8E3F3F9C14E98972AED72E2C89A84" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="61B444A802654068BEA318CAE4618B61" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="D7AD0D3D02934CAEA78D3143763BA34C" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="73D02297C0994B91A81CC3785E824D88" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div></div>
+<div class="section" id="other-data-types">
+<h2>Other Data Types<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html#other-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Bokeh also has the capability to render network graph data and geographical data.
+For more information about how to set up the data for these types of plots, see
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html#userguide-graph"><span class="std std-ref">Visualizing Network Graphs</span></a> and <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html#userguide-geo"><span class="std std-ref">Mapping Geo Data</span></a>.</p>
+</div>
+</div>
+
+
+    </div>
+  </div>
+
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+
+<footer class="footer">
+  <div class="footer-links">
+    <ul>
+      <li><span class="footer-title">About Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/team.html">Team</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/contact.html">Contact</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Links</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/faqs.html">FAQs</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/technical-vision.html">Technical vision</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/roadmap.html">Roadmap</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/citation.html">Citation</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Join Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/contribute.html">Contribute</a></li>
+      
+          <li><a href="https://groups.google.com/a/anaconda.com/forum/#!forum/bokeh">Mailing list</a></li>
+      
+          <li><a href="https://github.com/bokeh/bokeh">Github</a></li>
+      
+          <li><a href="https://twitter.com/BokehPlots">Twitter</a></li>
+      
+          <li><a href="https://www.youtube.com/channel/UCK0rSk29mmg4UT4bIOvPYhw">YouTube</a></li>
+      
+    </ul>
+    <ul class="copyright">
+      <li>© Copyright 2015, Anaconda.</li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-7', 'pydata.org');
+  ga('send', 'pageview');
+</script>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Providing Data for Plots and Tables — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"></body></html>

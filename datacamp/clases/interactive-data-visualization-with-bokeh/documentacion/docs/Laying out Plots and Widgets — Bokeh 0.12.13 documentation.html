@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html -->
+<html lang="en" class="wf-sourcesanspro-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  <title>Laying out Plots and Widgets — Bokeh 0.12.13 documentation</title>
+  <meta name="description" content="Bokeh visualization library, documentation site.">
+  <meta name="author" content="Bokeh contributors">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script async="" src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/analytics.js.descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/webfont.js.descarga"></script>
+  <link rel="stylesheet" href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/css" media="all"><script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/main.css">
+
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/jquery.min.js.descarga"></script>
+  <script type="text/javascript">
+    var _BOKEH_CURRENT_VERSION = "0.12.13";
+  </script>
+  <script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/main.js.descarga"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="https://bokeh.pydata.org/en/latest/_static/images/favicon.ico">
+
+  <!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="canonical" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html">
+
+<script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/jquery.min.js(1).descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.js.descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/katex.min.js.descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.js.descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.js.descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.js.descarga"></script><script src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-gl-0.12.13.min.js.descarga"></script></head>
+<body class="">
+
+  <header class="navigation">
+    <div class="wrapper">
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html" class="logo">
+        <img src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/logo.png" alt="Bokeh Logo">
+      </a>
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html" class="navigation-menu logo-text">Bokeh</a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Menu</a>
+      <nav>
+        <ul id="js-navigation-menu" class="navigation-menu">
+          
+              <li class="nav-link"><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/docs/gallery.html">Gallery</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/en/latest/">Docs</a></li>
+          
+              <li class="nav-link"><a href="https://github.com/bokeh/bokeh">Github</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="second-nav">
+    <nav>
+      <ul class="navigation-menu show">
+        <li class="nav-link more"><a href="https://bokeh.pydata.org/en/latest/index.html">0.12.13</a>
+            <ul class="submenu">
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.13/">0.12.13</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.12/">0.12.12</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.11/">0.12.11</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.10/">0.12.10</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.9/">0.12.9</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.7/">0.12.7</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.6/">0.12.6</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.11.0/">0.11.0</a></li>
+              
+            </ul>
+        </li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/user_guide.html" class="current">User Guide</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/gallery.html">Gallery</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.13.html">Releases</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <div class="search-bar">
+  <form role="search" action="https://bokeh.pydata.org/en/latest/search.html" method="get">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">
+      <img src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/search-icon-black.png" alt="Search Icon">
+    </button>
+  </form>
+</div>
+    </div>
+  </div>
+
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+  <div class="docs section">
+    <div class="toc">
+      <ul class="current">
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide.html">User Guide</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html">Defining Key Concepts</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html">Plotting with Basic Glyphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html">Providing Data for Plots and Tables</a></li>
+<li class="toctree-l1 current show"><a class="current reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#">Laying out Plots and Widgets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#toolbars">Toolbars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#columns">Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#rows">Rows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#widgets">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#grids-layout-for-plots">Grids Layout for Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#general-grid-layout">General Grid Layout</a></li>
+</ul>
+</li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html">Handling Categorical Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html">Visualizing Network Graphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html">Mapping Geo Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html">Configuring Plot Tools</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html">Styling Visual Attributes</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html">Adding Annotations</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/interaction.html">Adding Interactions</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Running a Bokeh Server</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/notebook.html">Working in the Notebook</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/export.html">Exporting Plots</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/embed.html">Embedding Plots and Apps</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/cli.html">Using <code class="docutils literal"><span class="pre">bokeh</span></code> Commands</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/extensions.html">Extending Bokeh</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/compat.html">Leveraging Other Libraries</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html">Speeding up with WebGL</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/bokehjs.html">Developing with JavaScript</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/info.html">Learning More</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/0_bokeh.html">bokeh</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/application.html">bokeh.application</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/client.html">bokeh.client</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/colors.html">bokeh.colors</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/command.html">bokeh.command</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/core.html">bokeh.core</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/document.html">bokeh.document</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/driving.html">bokeh.driving</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/embed.html">bokeh.embed</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/events.html">bokeh.events</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/io.html">bokeh.io</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html">bokeh.layouts</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/model.html">bokeh.model</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html">bokeh.models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/palettes.html">bokeh.palettes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html">bokeh.plotting</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/protocol.html">bokeh.protocol</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/resources.html">bokeh.resources</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sampledata.html">bokeh.sampledata</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/server.html">bokeh.server</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/settings.html">bokeh.settings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sphinxext.html">bokeh.sphinxext</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/themes.html">bokeh.themes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html">bokeh.tile_providers</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html">bokeh.transform</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/util.html">bokeh.util</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/env_vars.html">Environment Variables</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/testing.html">Testing</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/documentation.html">Documentation</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/models.html">Bokeh Models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/server.html">Server Architecture</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bindings.html">Language Bindings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bokehjs.html">BokehJS</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.11.html">0.12.11 (Nov 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.10.html">0.12.10 (Oct 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.9.html">0.12.9 (Sep 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.7.html">0.12.7 (Aug 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.6.html">0.12.6 (Jun 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.5.html">0.12.5 (Mar 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.4.html">0.12.4 (Jan 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.3.html">0.12.3 (Oct 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.2.html">0.12.2 (Sept 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.1.html">0.12.1 (Jul 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.0.html">0.12.0 (Jun 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.1.html">0.11.1 (Feb 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.0.html">0.11.0 (Jan 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.10.0.html">0.10.0 (Sep 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.3.html">0.9.3 (Aug 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.2.html">0.9.2 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.1.html">0.9.1 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.0.html">0.9.0 (May 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.2.html">0.8.2 (Mar 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.1.html">0.8.1 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.0.html">0.8.0 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.1.html">0.7.1 (Jan 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.0.html">0.7.0 (Dec 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.1.html">0.6.1 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.0.html">0.6.0 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.2.html">0.5.2 (Aug 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.1.html">0.5.1 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.0.html">0.5.0 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.4.html">0.4.4 (Apr 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.2.html">0.4.2 (Mar 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.1.html">0.4.1 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.0.html">0.4.0 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.3.0.html">0.3.0 (Nov 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.2.0.html">0.2.0 (Oct 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.1.0.html">0.1.0 (Apr 2013)</a></li>
+</ul>
+
+    </div>
+    <div class="content">
+        
+  <div class="section" id="laying-out-plots-and-widgets">
+<span id="userguide-layout"></span><h1>Laying out Plots and Widgets<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#laying-out-plots-and-widgets" title="Permalink to this headline">¶</a></h1>
+<p>Bokeh includes several layout options for arranging plots and widgets. They aim
+to make it quick to create your interactive data applications. At the heart of
+the layouts are three core objects Row, Column, and WidgetBox. While you can
+use these models directly, we recommend using the layout functions <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.row" title="bokeh.layouts.row"><code class="xref py py-func docutils literal"><span class="pre">row()</span></code></a>,
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.column" title="bokeh.layouts.column"><code class="xref py py-func docutils literal"><span class="pre">column()</span></code></a>, and <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.widgetbox" title="bokeh.layouts.widgetbox"><code class="xref py py-func docutils literal"><span class="pre">widgetbox()</span></code></a>.</p>
+<p>The layout functions let you build a grid of plots and widgets. You can nest as
+many rows, columns, and plots together as you’d like. In addition, Bokeh
+layouts support a number of “sizing modes”. These sizing modes allow plots and
+widgets to resize based on the browser window.</p>
+<p>There are two things to keep in mind for best results using layout:</p>
+<ul class="simple">
+<li>All items must have the same sizing mode.</li>
+<li>Widgets should be inside a widget box.</li>
+</ul>
+<p>These guidelines are explained in more detail below:</p>
+<dl class="docutils">
+<dt>Consistent sizing mode</dt>
+<dd>Every item in a layout must have the same sizing mode for the layout to
+behave as expected. It is for this reason that we recommend using the
+layout functions as they help ensure that all the children of the row or
+column have the same sizing mode. We hope to lift this restriction in
+future releases.</dd>
+<dt>Widget boxes</dt>
+<dd>Widgets are HTML objects like buttons, and dropdown menus. They
+behave slightly differently to plots and and putting them in a widgetbox
+is necessary so that they can all work together. In fact, if you try and
+put a <code class="docutils literal"><span class="pre">Widget</span></code> in <code class="docutils literal"><span class="pre">Row</span></code> or <code class="docutils literal"><span class="pre">Column</span></code> it will be automatically put
+into a <code class="docutils literal"><span class="pre">WidgetBox</span></code>. As a result, it’s a good idea to wrap your own
+widgets in a``WidgetBox`` using <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.widgetbox" title="bokeh.layouts.widgetbox"><code class="xref py py-func docutils literal"><span class="pre">widgetbox()</span></code></a> as then you can be sure about
+how your widgets are getting arranged.</dd>
+</dl>
+<div class="section" id="toolbars">
+<h2>Toolbars<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#toolbars" title="Permalink to this headline">¶</a></h2>
+<p>For information about changing the position or orientation of plot toolbars,
+see <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html#userguide-tools-toolbar"><span class="std std-ref">Positioning the Toolbar</span></a> section in the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html#userguide-tools"><span class="std std-ref">Configuring Plot Tools</span></a>
+chapter of the User’s Guide.</p>
+</div>
+<div class="section" id="columns">
+<span id="userguide-layout-layout-columns"></span><h2>Columns<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#columns" title="Permalink to this headline">¶</a></h2>
+<p>To display plots or widgets in a vertical fashion, use the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.column" title="bokeh.layouts.column"><code class="xref py py-func docutils literal"><span class="pre">column()</span></code></a> function:</p>
+<div class="highlight-python" id="docs/user_guide/layout.bokeh-plot-b50e8de988cf421caf81d400cbb577c9.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">column</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"layout.html"</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">-</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># create a new plot</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"navy"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># create another one</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">s2</span><span class="o">.</span><span class="n">triangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"firebrick"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># create and another</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"olive"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># put the results in a column and show</span>
+<span class="n">show</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">))</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="05C0B57CCF034C61B837126C5D2E9324" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 250px; height: 750px;"><div id="A7869585B95640888D5CFFE7730E31D0" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="BC78A942EE304E37A051BB49D787DB41" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="DB54801362CA4371B6F4211E873C2A6C" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="1FB2030E5BF14098BB5CB98F0503EAE8" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="223804A08B054F739D0A1BC7D33B29FB" style="position: absolute; left: 220px; top: 5px; width: 30px; height: 221px; overflow: hidden;"><div id="7D50620525014D47B13439473B3782AD" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="FC3B8A2141734A88980B363BF960A2C7" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="FF78F0A0362F4B27A354521679558C57" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="0E4F5FDDD8FC4E30894D74FFA4C1231F" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="AA7E5890F5554A25A83A81F106499DCD" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="14E6CCD2067449A1BD4B8B3C4C663BF3" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="2C9A9DD84D7A462FAAB7B754CE9D6616" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div><div id="6B116CF36F8742B59DBAAAA80B491EAD" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="7DF5D1E98EB041C9BB51DEFA051A42D6" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="F6CA19B87D484BF79C7F32E0B930C490" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="D20CCF5A79A34F788E519388BE09021C" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="7824A73AB0FF4E9A8AF9746E4EB1A735" style="position: absolute; left: 220px; top: 5px; width: 30px; height: 221px; overflow: hidden;"><div id="BF49D56A616647B3BBD7FE95396C3F10" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="C9AD0DB443324D8F9E5357001E70E494" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="E3BDE0F2FAEA4D1D9585A873078C1BB7" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="681254243CDA416C82A2139925DD3C0E" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="C9158876B3E84957AC52CF7FA7AABB39" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="5F1138FE6EB34CBBAAA5EABD39704FF7" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="CBA34EF76B6F4F41A081AB7F070B5DD0" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div><div id="F92B7AEF60384770AD52C328C57DB7DF" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="AF3C6CD22C3D40A0B0D4C55FBDD2D01D" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="66F7DEDC4C4844D98A163B233864FE7E" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="CEEA5874D01547CBBC822866DE74C760" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="EC33F380534D4B6EB6D2EDC14430C3C0" style="position: absolute; left: 220px; top: 5px; width: 30px; height: 221px; overflow: hidden;"><div id="4A8E5F5985564BCF9422A31B9FB27FEC" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="6951B4A609924EC3804B11338CEAD2D0" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="4D6687ABE9654D39ABE0E70CF666DDDD" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="9C7AFC9450E54101AD86FEAB8BF1C679" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="366AE9E3952D4DF28CA068FF799769CF" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="91BF32C51F2A42E38DA5C9A5C9D33DF6" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="6CA99CB8E5B34355B049F7816EC2855B" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div></div></div></div>
+<div class="section" id="rows">
+<span id="userguide-layout-layout-rows"></span><h2>Rows<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#rows" title="Permalink to this headline">¶</a></h2>
+<p>To display plots horizontally, use the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.row" title="bokeh.layouts.row"><code class="xref py py-func docutils literal"><span class="pre">row()</span></code></a> function.</p>
+<div class="highlight-python" id="docs/user_guide/layout.bokeh-plot-c9d14aaa6d21423d9935fe22b16697e8.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">row</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"layout.html"</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">-</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># create a new plot</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"navy"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># create another one</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">s2</span><span class="o">.</span><span class="n">triangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"firebrick"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># create and another</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"olive"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># put the results in a row</span>
+<span class="n">show</span><span class="p">(</span><span class="n">row</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">))</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="AF219B13A6714FE19F46508EE3AA895F" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 750px; height: 250px;"><div id="EABDFB694E0E498CA1F2CBB466FBE871" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="72EDE8E836B646E49733353C7A529142" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="B7C3977380CD4BBEA7881BBEB5BE61DC" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="4C09D8950A5C459D9AD3B9BDBEAF405C" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="63F42792B8374952A6DE22D11C056BEE" style="position: absolute; left: 220px; top: 5px; width: 30px; height: 221px; overflow: hidden;"><div id="4974BE6B50D0438DB3769A064FFC9D97" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="C906064762AA4C8A8A8E7E055D6B46B9" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="15984009C48D436EB128210ABDF73F8A" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="9987A4F5622D48E38BA4F0D1DB2FC820" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="D70B7AC26F4F493DA81E0341E5FD0E46" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="596FD897DC4F4AB3B366DC03B3CA6A33" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="EFB013FBA2194F1A84EC31C91E1DBE42" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div><div id="08D7907FE7E1476DB708D03FE549FBE5" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="6CDBDA99192A4CA5874835A08B45F046" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="C27B16340C834927A7E0DF0A5C41B454" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="5BEB6EB61C914FDAB89F796B51E94933" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="6FA2141052754E07BF28266899D94DF4" style="position: absolute; left: 220px; top: 5px; width: 30px; height: 221px; overflow: hidden;"><div id="567635B0163A46AAA49698D8EFC61C9C" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="D3EFA8659EBC43229AAB0030E9E909FC" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="D8A9840798744366948E9F9E9457971F" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="0CC5343C213F44849B3AFBD3DC85EB14" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="E71EAE3073F04E348775AE42C41C9EA7" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="08C14D03F2CA4A4D84F32F72DD707BA8" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="D01003C08245467A9AB250FB6595B3B7" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div><div id="284486CCEE1146EF9E9AF675791921A8" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="28F9F5E3FDB14A348C11B20337E97845" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="59734BA713B04EC795CB159BA5A984BF" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="7512BC3EB4A743C380CB0C828467ED32" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="641425298D114B308880D58D7F8B8D82" style="position: absolute; left: 220px; top: 5px; width: 30px; height: 221px; overflow: hidden;"><div id="7D25972CE47C4D35A7BFBA1C180F1439" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="6DE514D84A90495A807C81AF8CE88F24" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="2CCF10468F4F46E6A20512D5A7E2F222" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="8F19E917EC6746E29E287D120748EBB5" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="E07B804D8CDF4E0FA1838C24A12D1EDD" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="093A02F988634AB0B9678C64FCBEFF15" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="70B426FF4683475DA5710BC140D502CA" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div></div></div></div>
+<div class="section" id="widgets">
+<span id="userguide-layout-widgets"></span><h2>Widgets<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#widgets" title="Permalink to this headline">¶</a></h2>
+<p>Layout a group of widgets with the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.widgetbox" title="bokeh.layouts.widgetbox"><code class="xref py py-func docutils literal"><span class="pre">widgetbox()</span></code></a> function.</p>
+<div class="highlight-python" id="docs/user_guide/layout.bokeh-plot-96ddf0289d6f493db2945d99154efc45.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">widgetbox</span>
+<span class="kn">from</span> <span class="nn">bokeh.models.widgets</span> <span class="kn">import</span> <span class="n">Button</span><span class="p">,</span> <span class="n">RadioButtonGroup</span><span class="p">,</span> <span class="n">Select</span><span class="p">,</span> <span class="n">Slider</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"layout_widgets.html"</span><span class="p">)</span>
+
+<span class="c1"># create some widgets</span>
+<span class="n">slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Slider"</span><span class="p">)</span>
+<span class="n">button_group</span> <span class="o">=</span> <span class="n">RadioButtonGroup</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"Option 1"</span><span class="p">,</span> <span class="s2">"Option 2"</span><span class="p">,</span> <span class="s2">"Option 3"</span><span class="p">],</span> <span class="n">active</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">select</span> <span class="o">=</span> <span class="n">Select</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Option:"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">"foo"</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span> <span class="s2">"bar"</span><span class="p">,</span> <span class="s2">"baz"</span><span class="p">,</span> <span class="s2">"quux"</span><span class="p">])</span>
+<span class="n">button_1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"Button 1"</span><span class="p">)</span>
+<span class="n">button_2</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">"Button 2"</span><span class="p">)</span>
+
+<span class="c1"># put the results in a row</span>
+<span class="n">show</span><span class="p">(</span><span class="n">widgetbox</span><span class="p">(</span><span class="n">button_1</span><span class="p">,</span> <span class="n">slider</span><span class="p">,</span> <span class="n">button_group</span><span class="p">,</span> <span class="n">select</span><span class="p">,</span> <span class="n">button_2</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="DA73795B551D4BBF8238DDAD3122DBC3" class="bk-widget-box bk-layout-fixed" style="width: 280px;"><div id="25DEEBA80EC04E89943ADC4AB0EA5507" class="bk-widget bk-layout-fixed"><button type="button" class="bk-bs-btn bk-bs-btn-default">Button 1</button></div><div id="EF00BC40D3F547BAABF16681BE65A53F" class="bk-widget bk-layout-fixed bk-slider"><label>Slider:</label><div class="bk-slider-value">1</div><div class="bk-noUi-target bk-noUi-ltr bk-noUi-horizontal"><div class="bk-noUi-base"><div class="bk-noUi-connect" style="background-color: rgb(230, 230, 230); left: 0%; right: 90%;"></div><div class="bk-noUi-origin" style="left: 10%;"><div class="bk-noUi-handle bk-noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="100.0" aria-valuenow="10.0" aria-valuetext="1.00" style="z-index: 4;"><div class="bk-noUi-tooltip">1</div></div></div></div></div></div><div id="F8D2ACEFA1A6422693469881F9CC7C40" class="bk-widget bk-layout-fixed"><div class="bk-bs-btn-group"><label class="bk-bs-btn bk-bs-btn-default bk-bs-active"><input type="radio" name="1E6117436809466C8FF93FAA98428515" value="0" checked="true">Option 1</label><label class="bk-bs-btn bk-bs-btn-default"><input type="radio" name="1E6117436809466C8FF93FAA98428515" value="1">Option 2</label><label class="bk-bs-btn bk-bs-btn-default"><input type="radio" name="1E6117436809466C8FF93FAA98428515" value="2">Option 3</label></div></div><div id="505989A0EC614E458725ED19B17199F1" class="bk-widget bk-layout-fixed"><label for="c78fb79e-4116-48a8-a484-9a66b4b1161e">Option:</label><select class="bk-widget-form-input" id="c78fb79e-4116-48a8-a484-9a66b4b1161e"><option selected="true" value="foo">foo</option><option value="bar">bar</option><option value="baz">baz</option><option value="quux">quux</option></select></div><div id="E37C613A701F480B9E645F6B7DACCA65" class="bk-widget bk-layout-fixed"><button type="button" class="bk-bs-btn bk-bs-btn-default">Button 2</button></div></div></div></div>
+<div class="section" id="grids-layout-for-plots">
+<span id="userguide-layout-layout-gridplot"></span><h2>Grids Layout for Plots<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#grids-layout-for-plots" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.gridplot" title="bokeh.layouts.gridplot"><code class="xref py py-func docutils literal"><span class="pre">gridplot()</span></code></a> function can be used to arrange
+Bokeh Plots in grid layout. <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.gridplot" title="bokeh.layouts.gridplot"><code class="xref py py-func docutils literal"><span class="pre">gridplot()</span></code></a> also collects all
+tools into a single toolbar, and the currently active tool is the same
+for all plots in the grid. It is possible to leave “empty” spaces in
+the grid by passing <code class="docutils literal"><span class="pre">None</span></code> instead of a plot object.</p>
+<div class="highlight-python" id="docs/user_guide/layout.bokeh-plot-ec32c54b0ade4712bffc0ee81331c729.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Viridis3</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"layout_grid.html"</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">-</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># create three plots</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">p1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Viridis3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">p2</span><span class="o">.</span><span class="n">triangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Viridis3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">p3</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">p3</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Viridis3</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># make a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">],</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">p3</span><span class="p">]])</span>
+
+<span class="c1"># show the results</span>
+<span class="n">show</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="3EF323ECA0694C3289674B46C65ACD52" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 500px; height: 530px;"><div id="E7F15159F46941D1AD691640B018EED4" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 500px; height: 30px;"><div id="1AAB2042D37E4F84A66674B9C6EBF7B3" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="21309F35ED9F480F9811A2E1957F3A4B" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="B198F91FA43043D08163E5809E1380FF" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="6F42DB6DB8684FD083F1AAC23FB18062" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="5CF306D82D49498391992ECD2474EC9B" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="37211ADC3464480AA261D75D66239B09" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="E1E0141EB79346E69DB4A6E77EE105C4" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div><div id="0C9847440B9C484E974575C946EC4C4E" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 500px; height: 500px;"><div id="AFB8758B6ED94AD287A7F558E94D2081" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 500px; height: 250px;"><div id="2F9C0591050745B6B1C389B61484B148" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="481B295ACABA41858551071C779DAF02" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="535C615155B44B0882CE3ED822A2737C" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="3D35EA83668E4B289FF49435529968B8" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="B3A52A5B51D24690BA8A6B6A8B55411A" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="9FE875D02BE04BFE92BEC78B147A4E16" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="5A063BA921F348A79A07315703FE1037" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="B19FC8779E9A4081ACB3BBB00F0432CD" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div><div id="93A8755C7BA646A58CFCBE2BD6C3A231" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 500px; height: 250px;"><div id="97F8CC53A9E44827BC8550130A5460CE" class="bk-spacer-box bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"></div><div id="58E3F327D1B74A65AEDC3F442D49F489" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="20D748D706EB4A2DB9DB95B0271AE71F" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="27378F1A1ACF4D708E629F99555B497C" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="792379F62CDA41B299FA1629EE276A91" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div><p>For convenience you can also just pass a list of plots, and specify the
+number of columns you want in your grid. For example,</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gridplot</span><span class="p">([[</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">],</span> <span class="p">[</span><span class="n">s3</span><span class="p">,</span> <span class="bp">None</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gridplot</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">],</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>are equivalent. In addition, you can pass in <code class="docutils literal"><span class="pre">plot_width</span></code> and
+<code class="docutils literal"><span class="pre">plot_height</span></code> arguments, and this will set the size of all your plots.
+By default, <code class="docutils literal"><span class="pre">gridplot</span></code> will merge all tools within each child plot
+to a single toolbar attached to the grid. To disable this behavior,
+you can set the option <code class="docutils literal"><span class="pre">merge_tools</span></code> to <code class="docutils literal"><span class="pre">False</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot use <code class="docutils literal"><span class="pre">None</span></code> with the <code class="docutils literal"><span class="pre">ncols</span></code> argument. It must only be a list
+of <code class="docutils literal"><span class="pre">Plot</span></code> objects at once.</p>
+</div>
+<div class="highlight-python" id="docs/user_guide/layout.bokeh-plot-dccc6ee7ec03469791702cf2aa190077.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Viridis3</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"layout_grid_convenient.html"</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="o">-</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+<span class="c1"># create three plots</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">s1</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Viridis3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">s2</span><span class="o">.</span><span class="n">triangle</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Viridis3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">s3</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Viridis3</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># make a grid</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">],</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
+
+<span class="c1"># show the results</span>
+<span class="n">show</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="BCB519FE94C34144996C3E322AD39FFE" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 500px; height: 530px;"><div id="FDEC96EB451E4CB5A0069D42FF79ADC7" class="bk-toolbar-box bk-layout-scale_width" style="position: relative; width: 500px; height: 30px;"><div id="B995A7A8A6894A3AB4FFE53B60BAD117" class="bk-toolbar bk-toolbar-above"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="941BE47FFE02461189900B964382DFFC" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="E0F191ADC26442BDB6F367D6583294EF" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="E26B18E6720C4C299759CB79C1DE8D94" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="28F0778216BC4C54A80D38B10C651B89" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="B8D97400FDF145F6BD18AB4590C1FBB9" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="79F436E3930D4475B3437788A0F5B3E4" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div><div id="7095D80D493343BCBA7ADB5127394BAE" class="bk-grid-column bk-layout-fixed" style="position: relative; width: 500px; height: 500px;"><div id="EF2111F52BA34FFA9CD2C70C3833D2A0" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 500px; height: 250px;"><div id="D8611717BFE94555A263E9BDEB992BE5" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="AA62E91145C74D9FAAF5858C33CD05BA" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="680A2048336345369CF6DA2B7ADA5734" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="4DF20185B0BD446BBC7441B829960B36" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div><div id="6D694765A1874DD9B9DBD0881639471D" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="BE9884B4573B49ABAE7157AFA55384EA" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="1A7B843224E04DA6A5A8C2B5183C50E1" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="2BAC21EECAFF40EBBAFC60938E7514EB" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div><div id="FB49C6FBD83140ECBB2EFF51C3B0F3EF" class="bk-grid-row bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="1F5B8B3FDBBF4CB99EE8A65425F242F6" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 250px; height: 250px;"><div id="843FABBE9DA049618EB5EE749085AD10" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 250px; height: 250px;"><div id="F441D15F62AC4C47BE90FCE77AFF9736" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 250px; height: 250px;"><canvas class="bk-canvas" width="312.5" height="312.5" style="width: 250px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="28CD4F1B426E4FFEB56932F7B48DB7B3" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div></div></div></div>
+<div class="section" id="general-grid-layout">
+<span id="userguide-layout-layout"></span><h2>General Grid Layout<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html#general-grid-layout" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.layout" title="bokeh.layouts.layout"><code class="xref py py-func docutils literal"><span class="pre">layout()</span></code></a> function can be used to arrange both Plots and Widgets in a grid,
+generating the necessary <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.row" title="bokeh.layouts.row"><code class="xref py py-func docutils literal"><span class="pre">row()</span></code></a> and <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html#bokeh.layouts.column" title="bokeh.layouts.column"><code class="xref py py-func docutils literal"><span class="pre">column()</span></code></a> layouts automatically. This allows
+for quickly spelling a layout like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">layout</span><span class="p">([</span>
+  <span class="p">[</span><span class="n">bollinger</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">sliders</span><span class="p">,</span> <span class="n">plot</span><span class="p">],</span>
+  <span class="p">[</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">],</span>
+<span class="p">],</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">'stretch_both'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which produces the following layout:</p>
+<a class="reference internal image-reference" href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/dashboard.png"><img alt="../../_images/dashboard.png" src="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/dashboard.png" style="width: 500px; height: 397px;"></a>
+<p>The full code for this plot is available at
+<a class="reference external" href="https://github.com/bokeh/bokeh/tree/0.12.13/examples/howto/layouts/dashboard.py">examples/howto/layouts/dashboard.py</a> in the project GitHub
+repository.</p>
+</div>
+</div>
+
+
+    </div>
+  </div>
+
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+
+<footer class="footer">
+  <div class="footer-links">
+    <ul>
+      <li><span class="footer-title">About Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/team.html">Team</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/contact.html">Contact</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Links</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/faqs.html">FAQs</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/technical-vision.html">Technical vision</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/roadmap.html">Roadmap</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/citation.html">Citation</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Join Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/contribute.html">Contribute</a></li>
+      
+          <li><a href="https://groups.google.com/a/anaconda.com/forum/#!forum/bokeh">Mailing list</a></li>
+      
+          <li><a href="https://github.com/bokeh/bokeh">Github</a></li>
+      
+          <li><a href="https://twitter.com/BokehPlots">Twitter</a></li>
+      
+          <li><a href="https://www.youtube.com/channel/UCK0rSk29mmg4UT4bIOvPYhw">YouTube</a></li>
+      
+    </ul>
+    <ul class="copyright">
+      <li>© Copyright 2015, Anaconda.</li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-7', 'pydata.org');
+  ga('send', 'pageview');
+</script>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/normalize.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/ion.rangeSlider.skinFlat.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/sprite-skin-flat.png" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/katex.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Laying out Plots and Widgets — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"></body></html>

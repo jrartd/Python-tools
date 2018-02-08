@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html -->
+<html lang="en" class="wf-sourcesanspro-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  <title>Handling Categorical Data — Bokeh 0.12.13 documentation</title>
+  <meta name="description" content="Bokeh visualization library, documentation site.">
+  <meta name="author" content="Bokeh contributors">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script async="" src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/analytics.js.descarga"></script><script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/webfont.js.descarga"></script>
+  <link rel="stylesheet" href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/css" media="all"><script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/main.css">
+
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/jquery.min.js.descarga"></script>
+  <script type="text/javascript">
+    var _BOKEH_CURRENT_VERSION = "0.12.13";
+  </script>
+  <script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/main.js.descarga"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="https://bokeh.pydata.org/en/latest/_static/images/favicon.ico">
+
+  <!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="canonical" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html">
+
+<script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.js.descarga"></script><script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.js.descarga"></script><script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.js.descarga"></script><script src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-gl-0.12.13.min.js.descarga"></script></head>
+<body class="">
+
+  <header class="navigation">
+    <div class="wrapper">
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html" class="logo">
+        <img src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/logo.png" alt="Bokeh Logo">
+      </a>
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html" class="navigation-menu logo-text">Bokeh</a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Menu</a>
+      <nav>
+        <ul id="js-navigation-menu" class="navigation-menu">
+          
+              <li class="nav-link"><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/docs/gallery.html">Gallery</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/en/latest/">Docs</a></li>
+          
+              <li class="nav-link"><a href="https://github.com/bokeh/bokeh">Github</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="second-nav">
+    <nav>
+      <ul class="navigation-menu show">
+        <li class="nav-link more"><a href="https://bokeh.pydata.org/en/latest/index.html">0.12.13</a>
+            <ul class="submenu">
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.13/">0.12.13</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.12/">0.12.12</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.11/">0.12.11</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.10/">0.12.10</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.9/">0.12.9</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.7/">0.12.7</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.6/">0.12.6</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.11.0/">0.11.0</a></li>
+              
+            </ul>
+        </li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/user_guide.html" class="current">User Guide</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/gallery.html">Gallery</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.13.html">Releases</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <div class="search-bar">
+  <form role="search" action="https://bokeh.pydata.org/en/latest/search.html" method="get">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">
+      <img src="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/search-icon-black.png" alt="Search Icon">
+    </button>
+  </form>
+</div>
+    </div>
+  </div>
+
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+  <div class="docs section">
+    <div class="toc">
+      <ul class="current">
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide.html">User Guide</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html">Defining Key Concepts</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html">Plotting with Basic Glyphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html">Providing Data for Plots and Tables</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html">Laying out Plots and Widgets</a></li>
+<li class="toctree-l1 current show"><a class="current reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#">Handling Categorical Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#bars">Bars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#basic">Basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#colors">Colors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#grouped">Grouped</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#nested-categories">Nested Categories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#visual-dodge">Visual Dodge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#stacked">Stacked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#mixed-factors">Mixed Factors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#pandas">Pandas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#intervals">Intervals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#scatters">Scatters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#adding-jitter">Adding Jitter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#categorical-offsets">Categorical Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#heat-maps">Heat Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html">Visualizing Network Graphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html">Mapping Geo Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html">Configuring Plot Tools</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html">Styling Visual Attributes</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html">Adding Annotations</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/interaction.html">Adding Interactions</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Running a Bokeh Server</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/notebook.html">Working in the Notebook</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/export.html">Exporting Plots</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/embed.html">Embedding Plots and Apps</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/cli.html">Using <code class="docutils literal"><span class="pre">bokeh</span></code> Commands</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/extensions.html">Extending Bokeh</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/compat.html">Leveraging Other Libraries</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html">Speeding up with WebGL</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/bokehjs.html">Developing with JavaScript</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/info.html">Learning More</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/0_bokeh.html">bokeh</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/application.html">bokeh.application</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/client.html">bokeh.client</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/colors.html">bokeh.colors</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/command.html">bokeh.command</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/core.html">bokeh.core</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/document.html">bokeh.document</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/driving.html">bokeh.driving</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/embed.html">bokeh.embed</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/events.html">bokeh.events</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/io.html">bokeh.io</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html">bokeh.layouts</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/model.html">bokeh.model</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html">bokeh.models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/palettes.html">bokeh.palettes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html">bokeh.plotting</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/protocol.html">bokeh.protocol</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/resources.html">bokeh.resources</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sampledata.html">bokeh.sampledata</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/server.html">bokeh.server</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/settings.html">bokeh.settings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sphinxext.html">bokeh.sphinxext</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/themes.html">bokeh.themes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html">bokeh.tile_providers</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html">bokeh.transform</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/util.html">bokeh.util</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/env_vars.html">Environment Variables</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/testing.html">Testing</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/documentation.html">Documentation</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/models.html">Bokeh Models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/server.html">Server Architecture</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bindings.html">Language Bindings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bokehjs.html">BokehJS</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.11.html">0.12.11 (Nov 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.10.html">0.12.10 (Oct 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.9.html">0.12.9 (Sep 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.7.html">0.12.7 (Aug 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.6.html">0.12.6 (Jun 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.5.html">0.12.5 (Mar 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.4.html">0.12.4 (Jan 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.3.html">0.12.3 (Oct 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.2.html">0.12.2 (Sept 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.1.html">0.12.1 (Jul 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.0.html">0.12.0 (Jun 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.1.html">0.11.1 (Feb 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.0.html">0.11.0 (Jan 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.10.0.html">0.10.0 (Sep 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.3.html">0.9.3 (Aug 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.2.html">0.9.2 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.1.html">0.9.1 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.0.html">0.9.0 (May 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.2.html">0.8.2 (Mar 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.1.html">0.8.1 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.0.html">0.8.0 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.1.html">0.7.1 (Jan 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.0.html">0.7.0 (Dec 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.1.html">0.6.1 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.0.html">0.6.0 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.2.html">0.5.2 (Aug 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.1.html">0.5.1 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.0.html">0.5.0 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.4.html">0.4.4 (Apr 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.2.html">0.4.2 (Mar 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.1.html">0.4.1 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.0.html">0.4.0 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.3.0.html">0.3.0 (Nov 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.2.0.html">0.2.0 (Oct 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.1.0.html">0.1.0 (Apr 2013)</a></li>
+</ul>
+
+    </div>
+    <div class="content">
+        
+  <div class="section" id="handling-categorical-data">
+<span id="userguide-categorical"></span><h1>Handling Categorical Data<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#handling-categorical-data" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Several examples in this chapter use <a class="reference external" href="http://pandas.pydata.org/">Pandas</a>, for ease of presentation
+and because it is a common tool for data manipulation. However, <code class="docutils literal"><span class="pre">Pandas</span></code>
+is not required to create anything shown here.</p>
+</div>
+<div class="section" id="bars">
+<span id="userguide-categorical-bars"></span><h2>Bars<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#bars" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic">
+<span id="userguide-categorical-bars-basic"></span><h3>Basic<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#basic" title="Permalink to this headline">¶</a></h3>
+<p>Bokeh make it simple to create basic bar charts using the
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure.hbar" title="bokeh.plotting.figure.Figure.hbar"><code class="xref py py-func docutils literal"><span class="pre">hbar()</span></code></a> and
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure.vbar" title="bokeh.plotting.figure.Figure.vbar"><code class="xref py py-func docutils literal"><span class="pre">vbar()</span></code></a> glyphs methods. In the example
+below, we have the following sequence of simple 1-level factors:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To inform Bokeh that the x-axis is categorical, we pass this list of factors
+as the <code class="docutils literal"><span class="pre">x_range</span></code> argument to :fund:<code class="docutils literal"><span class="pre">~bokeh.plotting.figure.figure</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that passing the list of factors is a convenient shorthand notation for
+creating a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/ranges.html#bokeh.models.ranges.FactorRange" title="bokeh.models.ranges.FactorRange"><code class="xref py py-class docutils literal"><span class="pre">FactorRange</span></code></a>. The equivalent explicit
+notation is:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">FactorRange</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">fruits</span><span class="p">),</span> <span class="o">...</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>This more explicit for is useful when you want to customize the
+<code class="docutils literal"><span class="pre">FactorRange</span></code>, e.g. by changing the range or category padding.</p>
+<p>Next we can call <code class="docutils literal"><span class="pre">vbar</span></code> with the list of fruit name factors as the <code class="docutils literal"><span class="pre">x</span></code>
+coordinate, the bar height as the <code class="docutils literal"><span class="pre">top</span></code> coordinate, and optionally any
+<code class="docutils literal"><span class="pre">width</span></code> or other properties that we would like to set:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All put together, we see the output:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-79b573dff75b44819c7d4043c8124d50.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"bars.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit Counts"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="8617CB0CA95543EA9B7F413A7BFC3B48" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="BFE7C6B3E97F49A2A9DC6B5A26BE4BFC" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="4AA7626EEB7B4820B0306B652CCD355E" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>As usual, the data could also be put into a <code class="docutils literal"><span class="pre">ColumnDataSource</span></code> supplied as
+the <code class="docutils literal"><span class="pre">source</span></code> parameter to <code class="docutils literal"><span class="pre">vbar</span></code> instead of passing the data directly
+as parameters. The next example will demonstrate this.</p>
+</div>
+<div class="section" id="colors">
+<span id="userguide-categorical-bars-colormapped"></span><h3>Colors<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#colors" title="Permalink to this headline">¶</a></h3>
+<p>Often times we may want to have bars that are shaded some color. This can be
+accomplished in different ways. One way is to supply all the colors up front.
+This can be done by putting all the data, including the colors for each bar,
+in a <code class="docutils literal"><span class="pre">ColumnDataSource</span></code>. Then the name of the column containing the colors
+is passed to <code class="docutils literal"><span class="pre">figure</span></code> as the <code class="docutils literal"><span class="pre">color</span></code> (or <code class="docutils literal"><span class="pre">line_color</span></code>/<code class="docutils literal"><span class="pre">fill_color</span></code>)
+arguments. This is shown below:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-3df5a9f2ceb34c4b943206aa0b15ea49.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Spectral6</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"colormapped_bars.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fruits</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="n">counts</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Spectral6</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit Counts"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'counts'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'color'</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="s2">"fruits"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">"horizontal"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">"top_center"</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="4C5D6400EB574AE1AB7D1719DD57611C" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="BEDD625544E445888311817D90ACFAA9" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="756C5A04CE904D748C292BA1B412ED22" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>Another way to shade the bars is to use a <code class="docutils literal"><span class="pre">CategoricalColorMapper</span></code> that
+colormaps the bars inside the browser. There is a function
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html#bokeh.transform.factor_cmap" title="bokeh.transform.factor_cmap"><code class="xref py py-func docutils literal"><span class="pre">factor_cmap()</span></code></a> that makes this simple to do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">factor_cmap</span><span class="p">(</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">Spectral6</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="n">fruits</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This can be passed to <code class="docutils literal"><span class="pre">figure</span></code> in the same way as the column name in the
+previous example. Putting everything together we obtain the same plot in
+a different way:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-42caefda344e4b9a9ae0220338fd47b3.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Spectral6</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"colormapped_bars.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fruits</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="n">counts</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit Counts"</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'counts'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="s2">"fruits"</span><span class="p">,</span>
+       <span class="n">line_color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="n">factor_cmap</span><span class="p">(</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">Spectral6</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="n">fruits</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">"horizontal"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">"top_center"</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="788F4F7A5370432E8962FE59CB59EDFB" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="B0251E4EA07D4B56B63A4F06F834EFDB" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="78FAD6F2152B49DC9B7B77CCF620373C" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="41239E70185E4A44ACA8648787402BFF" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div>
+<div class="section" id="grouped">
+<span id="userguide-categorical-bars-grouped"></span><h3>Grouped<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#grouped" title="Permalink to this headline">¶</a></h3>
+<p>When creating bar charts, it is often desirable to visually display the
+data according to sub-groups. There are two basic methods that can be used,
+depending on your use case: using nested categorical coordinates, or
+applying vidual dodges.</p>
+<div class="section" id="nested-categories">
+<span id="userguide-categorical-bars-grouped-nested"></span><h4>Nested Categories<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#nested-categories" title="Permalink to this headline">¶</a></h4>
+<p>If the coordinates of a plot range and data have two or three levels, then
+Bokeh will automatically group the factors on the axis, including a
+hierarchical tick labeling with separators between the groups. In the case
+of bar charts, this results in bars grouped together by the top-level
+factors. This is probably the most common way to achieve grouped bars,
+especially if you are starting from “tidy” data.</p>
+<p>The example below shows this approach by creating a single column of
+coordinates that are each 2-tuples of the form <code class="docutils literal"><span class="pre">(fruit,</span> <span class="pre">year)</span></code>. Accordingly,
+the plot groups the axes by fruit type, with a single call to <code class="docutils literal"><span class="pre">vbar</span></code>:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-b15208588afd428688bf2cd4fa0e1dd4.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">FactorRange</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"bars.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'2015'</span><span class="p">,</span> <span class="s1">'2016'</span><span class="p">,</span> <span class="s1">'2017'</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'fruits'</span> <span class="p">:</span> <span class="n">fruits</span><span class="p">,</span>
+        <span class="s1">'2015'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s1">'2016'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">'2017'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+
+<span class="c1"># this creates [ ("Apples", "2015"), ("Apples", "2016"), ("Apples", "2017"), ("Pears", "2015), ... ]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">fruit</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">'2015'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">'2016'</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">'2017'</span><span class="p">]),</span> <span class="p">())</span> <span class="c1"># like an hstack</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">counts</span><span class="o">=</span><span class="n">counts</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">FactorRange</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit Counts by Year"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'counts'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="226A83C766DB44039B892B8611B11F16" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="179BE571BF2147DCB39F2FC257B6D095" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="F35279FE7DE24D3888CE47CC8CB7CD4D" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>We can also apply a color mapping, similar to the earlier example. To obtain
+same grouped bar plot of fruits data as above, except with the bars shaded by
+the year, changethe <code class="docutils literal"><span class="pre">vbar</span></code> function call to use <code class="docutils literal"><span class="pre">factor_cmap</span></code> for the
+<code class="docutils literal"><span class="pre">fill_color</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'counts'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span>
+
+       <span class="c1"># use the palette to colormap based on the the x[1:2] values</span>
+       <span class="n">fill_color</span><span class="o">=</span><span class="n">factor_cmap</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">palette</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Recall that the factors are of the for <code class="docutils literal"><span class="pre">(fruit,</span> <span class="pre">year)</span></code>. The <code class="docutils literal"><span class="pre">start=1</span></code>
+and <code class="docutils literal"><span class="pre">end=2</span></code> in the call to <code class="docutils literal"><span class="pre">factor_cmap</span></code> select the second part of data
+factors to use when color mapping.</p>
+
+<div class="bk-root"><div id="DC656042E90D4BE5B369F6344D7CB4B1" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="3ED1CC97B0604DECBAD93D40AC185C8B" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="C8B3A61B102B4987A591F1C2049DB5DA" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div></div>
+<div class="section" id="visual-dodge">
+<span id="userguide-categorical-bars-grouped-dodged"></span><h4>Visual Dodge<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#visual-dodge" title="Permalink to this headline">¶</a></h4>
+<p>Another method for achieving grouped bars is to explicitly specify a visual
+displacement for the bars. Such a visual offset is also referred to as a
+<em>dodge</em>.</p>
+<p>In this scenario, our data is not “tidy”. Instead a single table with
+rows indexed by factors <code class="docutils literal"><span class="pre">(fruit,</span> <span class="pre">year)</span></code>, we have separate series for each
+year. We can plot all the year series using separate calls to <code class="docutils literal"><span class="pre">vbar</span></code> but
+since every bar in each group has the same <code class="docutils literal"><span class="pre">fruit</span></code> factor, the bars would
+overlap visually. We can prevent this overlap and distinguish the bars
+visually by using the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html#bokeh.transform.dodge" title="bokeh.transform.dodge"><code class="xref py py-func docutils literal"><span class="pre">dodge()</span></code></a> function to provide an
+offset for each different call to <code class="docutils literal"><span class="pre">vbar</span></code>:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-7ab86ed9a9f648bfab9ed43849776118.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.core.properties</span> <span class="kn">import</span> <span class="n">value</span>
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">dodge</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"dodged_bars.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'2015'</span><span class="p">,</span> <span class="s1">'2016'</span><span class="p">,</span> <span class="s1">'2017'</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'fruits'</span> <span class="p">:</span> <span class="n">fruits</span><span class="p">,</span>
+        <span class="s1">'2015'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s1">'2016'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">'2017'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit Counts by Year"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dodge</span><span class="p">(</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="p">),</span> <span class="n">top</span><span class="o">=</span><span class="s1">'2015'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="s2">"#c9d9d3"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">value</span><span class="p">(</span><span class="s2">"2015"</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dodge</span><span class="p">(</span><span class="s1">'fruits'</span><span class="p">,</span>  <span class="mf">0.0</span><span class="p">,</span>  <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="p">),</span> <span class="n">top</span><span class="o">=</span><span class="s1">'2016'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="s2">"#718dbf"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">value</span><span class="p">(</span><span class="s2">"2016"</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">dodge</span><span class="p">(</span><span class="s1">'fruits'</span><span class="p">,</span>  <span class="mf">0.25</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="p">),</span> <span class="n">top</span><span class="o">=</span><span class="s1">'2017'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="s2">"#e84d60"</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="n">value</span><span class="p">(</span><span class="s2">"2017"</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">"top_left"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">"horizontal"</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="583456125783496D9204CEE84C19D5AB" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="497802339B95465ABC002E7283CFAE46" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="AFF0A4C227E848BC9FC885A0884E34D7" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div></div>
+</div>
+<div class="section" id="stacked">
+<span id="userguide-categorical-bars-stacked"></span><h3>Stacked<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#stacked" title="Permalink to this headline">¶</a></h3>
+<p>Another common operation or bar charts is to stack bars on top of one
+another. Bokeh makes this easy to do with the specialized
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure.hbar_stack" title="bokeh.plotting.figure.Figure.hbar_stack"><code class="xref py py-func docutils literal"><span class="pre">hbar_stack()</span></code></a> and
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh.plotting.figure.Figure.vbar_stack" title="bokeh.plotting.figure.Figure.vbar_stack"><code class="xref py py-func docutils literal"><span class="pre">vbar_stack()</span></code></a> functions. The example
+below shows the fruits data from above, but with the bars for each
+fruit type stacked instead of grouped:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-619533ea7b324f269e6839f85aa8f572.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.core.properties</span> <span class="kn">import</span> <span class="n">value</span>
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"stacked.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"2015"</span><span class="p">,</span> <span class="s2">"2016"</span><span class="p">,</span> <span class="s2">"2017"</span><span class="p">]</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"#c9d9d3"</span><span class="p">,</span> <span class="s2">"#718dbf"</span><span class="p">,</span> <span class="s2">"#e84d60"</span><span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'fruits'</span> <span class="p">:</span> <span class="n">fruits</span><span class="p">,</span>
+        <span class="s1">'2015'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s1">'2016'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+        <span class="s1">'2017'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit Counts by Year"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar_stack</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+             <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="n">value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">years</span><span class="p">])</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">minor_tick_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">"top_left"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">"horizontal"</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="CDC81AD275B64044A46D86B52632270C" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="6FBC442995094A8E9F765BAB54DFE797" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="AF4311B99C5F466483A29734E829C7D2" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>Note that behing the scenes, these functions work by stacking up the
+successive columns in separate calls to <code class="docutils literal"><span class="pre">vbar</span></code> or <code class="docutils literal"><span class="pre">hbar</span></code>. This kind of
+operation is akin the to dodge example above (i.e. the data in this case is
+<em>not</em> in a “tidy” data format).</p>
+<p>Sometimes we may want to stack bars that have both positive and negative
+extents. The example below shows how it is possible to create such a
+stacked bar chart that is split by positive and negative values:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-d414d79cbb304ba1871ac009ae9937b1.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">GnBu3</span><span class="p">,</span> <span class="n">OrRd3</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"stacked_split.html"</span><span class="p">)</span>
+
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"2015"</span><span class="p">,</span> <span class="s2">"2016"</span><span class="p">,</span> <span class="s2">"2017"</span><span class="p">]</span>
+
+<span class="n">exports</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'fruits'</span> <span class="p">:</span> <span class="n">fruits</span><span class="p">,</span>
+           <span class="s1">'2015'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+           <span class="s1">'2016'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+           <span class="s1">'2017'</span>   <span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+<span class="n">imports</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'fruits'</span> <span class="p">:</span> <span class="n">fruits</span><span class="p">,</span>
+           <span class="s1">'2015'</span>   <span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+           <span class="s1">'2016'</span>   <span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+           <span class="s1">'2017'</span>   <span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]}</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">y_range</span><span class="o">=</span><span class="n">fruits</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Fruit import/export, by year"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">hbar_stack</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">GnBu3</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">exports</span><span class="p">),</span>
+             <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> exports"</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">years</span><span class="p">])</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">hbar_stack</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'fruits'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">OrRd3</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">imports</span><span class="p">),</span>
+             <span class="n">legend</span><span class="o">=</span><span class="p">[</span><span class="s2">"</span><span class="si">%s</span><span class="s2"> imports"</span> <span class="o">%</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">years</span><span class="p">])</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">ygrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s2">"top_left"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">minor_tick_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="CFB752732866430682D53C35EB6EA5C0" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="6ABEB4752BAF4123915C4D789B618ABC" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="CDAE5E0B72D9441B8EF36A773E7D39D9" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"><div id="51B8DF25EE92419E949414A133CF783B" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div>
+<div class="section" id="mixed-factors">
+<span id="userguide-categorical-bars-mixed"></span><h3>Mixed Factors<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#mixed-factors" title="Permalink to this headline">¶</a></h3>
+<p>When dealing with hierarchical categories of two or three levels, it’s possible
+to use just the “higher level” portion of a coordinate to position glyphs. For
+example, if you have range with the hierarchical factors</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">factors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"East"</span><span class="p">,</span> <span class="s2">"Sales"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"East"</span><span class="p">,</span> <span class="s2">"Marketing"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"East"</span><span class="p">,</span> <span class="s2">"Dev"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"West"</span><span class="p">,</span> <span class="s2">"Sales"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"West"</span><span class="p">,</span> <span class="s2">"Marketing"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"West"</span><span class="p">,</span> <span class="s2">"Dev"</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Then it is possible to use just <cite>“Sales”</cite> and <cite>“Marketing”</cite> etc. as positions
+for glyphs. In this case the position is the center of the entire group. The
+example below shows bars for each month, grouped by financial quarter, and
+also adds a line (perhaps for a quarterly average) at the coordinates for
+<code class="docutils literal"><span class="pre">Q1</span></code>, <code class="docutils literal"><span class="pre">Q2</span></code>, etc.:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-77a6a546cee746c8b973ec5c95ed8888.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">FactorRange</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"mixed.html"</span><span class="p">)</span>
+
+<span class="n">factors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"Q1"</span><span class="p">,</span> <span class="s2">"jan"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q1"</span><span class="p">,</span> <span class="s2">"feb"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q1"</span><span class="p">,</span> <span class="s2">"mar"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Q2"</span><span class="p">,</span> <span class="s2">"apr"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q2"</span><span class="p">,</span> <span class="s2">"may"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q2"</span><span class="p">,</span> <span class="s2">"jun"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Q3"</span><span class="p">,</span> <span class="s2">"jul"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q3"</span><span class="p">,</span> <span class="s2">"aug"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q3"</span><span class="p">,</span> <span class="s2">"sep"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Q4"</span><span class="p">,</span> <span class="s2">"oct"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q4"</span><span class="p">,</span> <span class="s2">"nov"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Q4"</span><span class="p">,</span> <span class="s2">"dec"</span><span class="p">),</span>
+
+<span class="p">]</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_range</span><span class="o">=</span><span class="n">FactorRange</span><span class="p">(</span><span class="o">*</span><span class="n">factors</span><span class="p">),</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span> <span class="p">]</span>
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">factors</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s2">"Q1"</span><span class="p">,</span> <span class="s2">"Q2"</span><span class="p">,</span> <span class="s2">"Q3"</span><span class="p">,</span> <span class="s2">"Q4"</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="4770BEB30CE4413C9A2A9760E1860011" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="048B09952ED04BCFA7EC9E9881F77360" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="85DCC38C9DF74D6F869237DC29F378F7" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>This example also demonstrates that other glyphs such as lines also function
+with categorical coordinates.</p>
+</div>
+<div class="section" id="pandas">
+<span id="userguide-categorical-bars-pandas"></span><h3>Pandas<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#pandas" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://pandas.pydata.org/">Pandas</a> is a powerful and common tool for doing data analysis on tabular and
+timeseries data in Python. Although it is not <em>required</em> by Bokeh, Bokeh tries
+to make life easier when you do.</p>
+<p>Below is a plot that demonstrates some advantages when using Pandas with
+Bokeh:</p>
+<ul class="simple">
+<li>Pandas <code class="docutils literal"><span class="pre">GroupBy</span></code> objects can be used to initialize a <code class="docutils literal"><span class="pre">CoumnDataSource</span></code>,
+automatically creating columns for many statistical measures such as the
+group mean or count</li>
+<li><code class="docutils literal"><span class="pre">GroupBy</span></code> objects may also be passed directly as a range argument to
+<code class="docutils literal"><span class="pre">figure</span></code>.</li>
+</ul>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-ad2cdda37f1e436895e8cd47583759f9.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Spectral5</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.autompg</span> <span class="kn">import</span> <span class="n">autompg</span> <span class="k">as</span> <span class="n">df</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"groupby.html"</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">cyl</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cyl</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'cyl'</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+
+<span class="n">cyl_cmap</span> <span class="o">=</span> <span class="n">factor_cmap</span><span class="p">(</span><span class="s1">'cyl'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">Spectral5</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">cyl</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"MPG by # Cylinders"</span><span class="p">,</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'cyl'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'mpg_mean'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+       <span class="n">line_color</span><span class="o">=</span><span class="n">cyl_cmap</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="n">cyl_cmap</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s2">"some stuff"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="B359E190534F48F085A067A13C947DD6" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 350px;"><div id="D2D04D654D5745C3991A08FD8A81A4AC" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 350px;"><div id="552CDEF18749419483B59F03A0C66BC7" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 350px;"><canvas class="bk-canvas" width="750" height="437.5" style="width: 600px; height: 350px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>Not that in the example above, we grouped by the column <code class="docutils literal"><span class="pre">'cyl'</span></code> so our CDS
+has a column <code class="docutils literal"><span class="pre">'cyl'</span></code> for this index. Additionally, other non-grouped columns
+like <code class="docutils literal"><span class="pre">'mpg'</span></code> have had associated columns such <code class="docutils literal"><span class="pre">'mpg_mean'</span></code> added, that
+give the mean MPG value for each group.</p>
+<p>This usage also works when the grouping is multi-level. The example below shows
+how grouping the same data by <code class="docutils literal"><span class="pre">('cyl',</span> <span class="pre">'mfr')</span></code> results in a hierarchical
+nested axis. In this case, the index column name <code class="docutils literal"><span class="pre">'cyl_mfr'</span></code> is made by
+joining the names of the grouped columns together.</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-1e201ac40c2043f6b35887526831c9a6.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">HoverTool</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Spectral5</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.autompg</span> <span class="kn">import</span> <span class="n">autompg_clean</span> <span class="k">as</span> <span class="n">df</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">factor_cmap</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"bars.html"</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">cyl</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">cyl</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">yr</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">yr</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">((</span><span class="s1">'cyl'</span><span class="p">,</span> <span class="s1">'mfr'</span><span class="p">))</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+<span class="n">index_cmap</span> <span class="o">=</span> <span class="n">factor_cmap</span><span class="p">(</span><span class="s1">'cyl_mfr'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">Spectral5</span><span class="p">,</span> <span class="n">factors</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">cyl</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">end</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Mean MPG by # Cylinders and Manufacturer"</span><span class="p">,</span>
+           <span class="n">x_range</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'cyl_mfr'</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s1">'mpg_mean'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+       <span class="n">line_color</span><span class="o">=</span><span class="s2">"white"</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="n">index_cmap</span><span class="p">,</span> <span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s2">"Manufacturer grouped by # Cylinders"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_tools</span><span class="p">(</span><span class="n">HoverTool</span><span class="p">(</span><span class="n">tooltips</span><span class="o">=</span><span class="p">[(</span><span class="s2">"MPG"</span><span class="p">,</span> <span class="s2">"@mpg_mean"</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Cyl, Mfr"</span><span class="p">,</span> <span class="s2">"@cyl_mfr"</span><span class="p">)]))</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="89B226AB96D94CD1B1C15E267CFCD202" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 800px; height: 300px;"><div id="36D7E6CE0A7D40F783354457581A42A0" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 300px;"><div id="84B1452EECC2425591211A8A828D0339" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 800px; height: 300px;"><canvas class="bk-canvas" width="1000" height="375" style="width: 800px; height: 300px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div></div>
+</div>
+<div class="section" id="intervals">
+<span id="userguide-categorical-bars-intervals"></span><h2>Intervals<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#intervals" title="Permalink to this headline">¶</a></h2>
+<p>So far we have seen the bar glyphs used to create bar charts, which imply
+bars drawn from a common baseline. However, the bar glyphs can also be used
+to represent arbitrary intervals across a range.</p>
+<p>The example below uses <code class="docutils literal"><span class="pre">hbar</span></code> with both <code class="docutils literal"><span class="pre">left</span></code> and <code class="docutils literal"><span class="pre">right</span></code> properties
+supplied, to show the spread in times between bronze and gold medalists in
+Olympic sprinting over many years:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-d2d1573fbad64e98bb933751b89444bd.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.sprint</span> <span class="kn">import</span> <span class="n">sprint</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"sprint.html"</span><span class="p">)</span>
+
+<span class="n">sprint</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">sprint</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">sprint</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Year'</span><span class="p">)</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">y_range</span><span class="o">=</span><span class="n">group</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="mf">9.5</span><span class="p">,</span><span class="mf">12.7</span><span class="p">),</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">550</span><span class="p">,</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span><span class="s2">"Time Spreads for Sprint Medalists (by Year)"</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">hbar</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">"Year"</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="s1">'Time_min'</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="s1">'Time_max'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">ygrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s2">"Time (seconds)"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="85E6ABC29B0845368878ACEEFE61A6C0" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 400px; height: 550px;"><div id="1BAD2B3FAD3142049108D4B3209DA545" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 400px; height: 550px;"><div id="B148E12B96924597928B7443DEB5653A" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 400px; height: 550px;"><canvas class="bk-canvas" width="500" height="687.5" style="width: 400px; height: 550px;"></canvas><div class="bk-canvas-overlays"><div id="B6A69D8F58314D5FA14F6808341EDB9E" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div></div>
+<div class="section" id="scatters">
+<span id="userguide-categorical-scatters"></span><h2>Scatters<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#scatters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adding-jitter">
+<span id="userguide-categorical-scatters-jitter"></span><h3>Adding Jitter<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#adding-jitter" title="Permalink to this headline">¶</a></h3>
+<p>When plotting many scatter points in a single categorical category, it is
+common for points to start to visually overlap. In this case, Bokeh provides
+a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html#bokeh.transform.jitter" title="bokeh.transform.jitter"><code class="xref py py-func docutils literal"><span class="pre">jitter()</span></code></a> function that can automatically apply
+a random dodge to every point.</p>
+<p>The example below shows a scatter plot of every commit time for a GitHub user
+between 2012 and 2016, grouped by day of the week. A naive plot of this data
+would result in thousands of points overlapping in a narrow line for each day.
+By using <code class="docutils literal"><span class="pre">jitter</span></code> we can differentiate the points to obtain a useful plot:</p>
+<div class="highlight-python" id="docs/user_guide/categorical.bokeh-plot-9e8254ca0001444f918c6d0042b3f2cf.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">output_file</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.commits</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">jitter</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"bars.html"</span><span class="p">)</span>
+
+<span class="n">DAYS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Sun'</span><span class="p">,</span> <span class="s1">'Sat'</span><span class="p">,</span> <span class="s1">'Fri'</span><span class="p">,</span> <span class="s1">'Thu'</span><span class="p">,</span> <span class="s1">'Wed'</span><span class="p">,</span> <span class="s1">'Tue'</span><span class="p">,</span> <span class="s1">'Mon'</span><span class="p">]</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="n">DAYS</span><span class="p">,</span> <span class="n">x_axis_type</span><span class="o">=</span><span class="s1">'datetime'</span><span class="p">,</span>
+           <span class="n">title</span><span class="o">=</span><span class="s2">"Commits by Time of Day (US/Central) 2012—2016"</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'time'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">jitter</span><span class="p">(</span><span class="s1">'day'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="p">),</span>  <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'%Hh'</span><span class="p">]</span>
+<span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">ygrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="19A5223D152844B79E99EAEE06C1C2D0" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 800px; height: 300px;"><div id="21E146BE1E10420A914AE992E69979EC" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 300px;"><div id="B3673406F37B4433965E217991AF4ACC" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 800px; height: 300px;"><canvas class="bk-canvas" width="1000" height="375" style="width: 800px; height: 300px;"></canvas><div class="bk-canvas-overlays"><div id="6D646BE6BA614237950CF139552A0D91" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"><div id="F2E7F91BF8BD4E47A535D21837232CA3" style="position: absolute; left: 770px; top: 29px; width: 30px; height: 247px; overflow: hidden;"><div id="BBF9F7D068944B5A8338AB907775855F" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="C8A844D94C1040B385FAE0E91F0123F6" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div><div id="BFC8713A2A5C482A93E9643F23812043" class="bk-toolbar-button bk-tool-icon-box-zoom" title="Box Zoom"></div></div><div class="bk-button-bar"><div id="952A8519D7C14DF09FF563B3E4D06282" class="bk-toolbar-button bk-tool-icon-wheel-zoom" title="Wheel Zoom"></div></div><div class="bk-button-bar"><div id="701A156F7F7041D4997C0714E4A91B27" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div><div id="5B14DFF40C174CA79DF37DFCB072CF03" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div></div><div class="bk-button-bar"><div id="53EA492A54074DF38EA251974050FA1D" class="bk-toolbar-button bk-tool-icon-help" title="Click the question mark to learn more about Bokeh plot tools."></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="section" id="categorical-offsets">
+<span id="userguide-categorical-offsets"></span><h2>Categorical Offsets<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#categorical-offsets" title="Permalink to this headline">¶</a></h2>
+<p>We’ve seen above how categorical locations can be modified by operations like
+<em>dodge</em> and <em>jitter</em>.  It is also possible to supply an offset to a categorical
+location explicitly. This is done by adding a numeric value to the end of a
+category, e.g. <code class="docutils literal"><span class="pre">["Jan",</span> <span class="pre">0.2]</span></code> is the category “Jan” offset by a value of 0.2.
+For hierachical categories, the value is added at the end of the existing
+list, e.g. <code class="docutils literal"><span class="pre">["West",</span> <span class="pre">"Sales",</span> <span class="pre">-0,2]</span></code>. Any numeric value at the end of a
+list of categories is always interpreted as an offset.</p>
+<p>As an example, suppose we took our first example from the beginning and
+modified it like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Apples'</span><span class="p">,</span> <span class="s1">'Pears'</span><span class="p">,</span> <span class="s1">'Nectarines'</span><span class="p">,</span> <span class="s1">'Plums'</span><span class="p">,</span> <span class="s1">'Grapes'</span><span class="p">,</span> <span class="s1">'Strawberries'</span><span class="p">]</span>
+
+<span class="n">offsets</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]</span>
+
+<span class="c1"># This results in [ ['Apples', -0.5], ['Pears', -0.2], ... ]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">offsets</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">vbar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then the resulting plot has bars that are horizontally shifted by the amount of
+each corresponding offset:</p>
+
+<div class="bk-root"><div id="9587F0C1993F461C93C6099E06F37EF9" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 600px; height: 250px;"><div id="C3F52FB4D9DA4207B795A04A3E4E181A" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 600px; height: 250px;"><div id="53F2A5EE08DB4F5A9E3E27C18A175A4E" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 600px; height: 250px;"><canvas class="bk-canvas" width="750" height="312.5" style="width: 600px; height: 250px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><p>Below is a more sophisticated example of a Joy Plot that displays timeseries
+associated with different categories. It uses categorical offsets to specify
+patch coordinates for the timeseries inside each category.</p>
+
+<div class="bk-root"><div id="4DD4F40642D94529B28E7A6C33608D47" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 700px; height: 600px;"><div id="E1184D8DE0354C3A9E46EEFAA67677D7" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 700px; height: 600px;"><div id="E8A2AB175A86444ABE99BFD6FDFA7E2B" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 700px; height: 600px;"><canvas class="bk-canvas" width="875" height="750" style="width: 700px; height: 600px;"></canvas><div class="bk-canvas-overlays"><div id="2DE5F625228E4F8AB71E7A1C178E6BB0" class="bk-shading" style="display: none;"></div></div><div class="bk-canvas-events"></div></div></div></div></div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linspace</span>
+<span class="kn">from</span> <span class="nn">scipy.stats.kde</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">FixedTicker</span><span class="p">,</span> <span class="n">PrintfTickFormatter</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.perceptions</span> <span class="kn">import</span> <span class="n">probly</span>
+
+<span class="kn">import</span> <span class="nn">colorcet</span> <span class="kn">as</span> <span class="nn">cc</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"joyplot.html"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">joy</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">([</span><span class="n">category</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">scale</span><span class="o">*</span><span class="n">data</span><span class="p">))</span>
+
+<span class="n">cats</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">probly</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="n">cc</span><span class="o">.</span><span class="n">rainbow</span><span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="mi">15</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17</span><span class="p">)]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">110</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">y_range</span><span class="o">=</span><span class="n">cats</span><span class="p">,</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">x_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">105</span><span class="p">),</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cat</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">cats</span><span class="p">)):</span>
+    <span class="n">pdf</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">probly</span><span class="p">[</span><span class="n">cat</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">joy</span><span class="p">(</span><span class="n">cat</span><span class="p">,</span> <span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">source</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">cat</span><span class="p">)</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">background_fill_color</span> <span class="o">=</span> <span class="s2">"#efefef"</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">ticker</span> <span class="o">=</span> <span class="n">FixedTicker</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">formatter</span> <span class="o">=</span> <span class="n">PrintfTickFormatter</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%d%%</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">ygrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="s2">"#dddddd"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">ticker</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ticker</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">minor_tick_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">major_tick_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">axis_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="o">.</span><span class="n">range_padding</span> <span class="o">=</span> <span class="mf">0.12</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="heat-maps">
+<span id="userguide-categorical-heatmaps"></span><h2>Heat Maps<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html#heat-maps" title="Permalink to this headline">¶</a></h2>
+<p>In all of the cases above, we have had one categorical axis, and one
+continuous axis. It is possible to have plots with two categorical axes. If
+we shade the rectangle that defines each pair of categories, we end up with
+a <em>Categorical Heatmap</em></p>
+<p>The plot below shows such a plot, where the x-axis categories are a list of
+years from 1948 to 2016, and the y-axis categories are the months of the
+years. Each rectangle corresponding to a <code class="docutils literal"><span class="pre">(year,</span> <span class="pre">month)</span></code> combination is
+color mapped by the unemployment rate for that month and year. Since the
+unemployment rate is a continuous variable, a <code class="docutils literal"><span class="pre">LinearColorMapper</span></code> is used
+to colormap the plot, and is also passed to a color bar to provide a visual
+legend on the right:</p>
+
+<div class="bk-root"><div id="2C25273770B04AE19E18793D2B97156C" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 800px; height: 300px;"><div id="19F81963C0E645EAA42E92678D3E1A72" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 800px; height: 300px;"><div id="B6461BC13EE44885ADE5328200B541C7" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 800px; height: 300px;"><canvas class="bk-canvas" width="1000" height="375" style="width: 800px; height: 300px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">BasicTicker</span><span class="p">,</span> <span class="n">ColorBar</span><span class="p">,</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">LinearColorMapper</span><span class="p">,</span> <span class="n">PrintfTickFormatter</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.unemployment1948</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">transform</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"unemploymemt.html"</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'Year'</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'Annual'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'Month'</span>
+
+<span class="c1"># reshape to 1D array or rates with a month and year for each row.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">stack</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rate'</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># this is the colormap from the original NYTimes plot</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"#75968f"</span><span class="p">,</span> <span class="s2">"#a5bab7"</span><span class="p">,</span> <span class="s2">"#c9d9d3"</span><span class="p">,</span> <span class="s2">"#e2e2e2"</span><span class="p">,</span> <span class="s2">"#dfccce"</span><span class="p">,</span> <span class="s2">"#ddb7b1"</span><span class="p">,</span> <span class="s2">"#cc7878"</span><span class="p">,</span> <span class="s2">"#933b41"</span><span class="p">,</span> <span class="s2">"#550b1d"</span><span class="p">]</span>
+<span class="n">mapper</span> <span class="o">=</span> <span class="n">LinearColorMapper</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">low</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">high</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"US Unemployment 1948—2016"</span><span class="p">,</span>
+           <span class="n">x_range</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">),</span> <span class="n">y_range</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)),</span>
+           <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">x_axis_location</span><span class="o">=</span><span class="s2">"above"</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"Year"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"Month"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span>
+       <span class="n">line_color</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fill_color</span><span class="o">=</span><span class="n">transform</span><span class="p">(</span><span class="s1">'rate'</span><span class="p">,</span> <span class="n">mapper</span><span class="p">))</span>
+
+<span class="n">color_bar</span> <span class="o">=</span> <span class="n">ColorBar</span><span class="p">(</span><span class="n">color_mapper</span><span class="o">=</span><span class="n">mapper</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                     <span class="n">ticker</span><span class="o">=</span><span class="n">BasicTicker</span><span class="p">(</span><span class="n">desired_num_ticks</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)),</span>
+                     <span class="n">formatter</span><span class="o">=</span><span class="n">PrintfTickFormatter</span><span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="s2">"</span><span class="si">%d%%</span><span class="s2">"</span><span class="p">))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_layout</span><span class="p">(</span><span class="n">color_bar</span><span class="p">,</span> <span class="s1">'right'</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">axis_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">major_tick_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">major_label_text_font_size</span> <span class="o">=</span> <span class="s2">"5pt"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">major_label_standoff</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_label_orientation</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A final example combines many of the techniques in this chapter: color mappers,
+visual dodges, and Pandas DataFrames. These are used to create a different
+sort of “heatmap” that results in a periodic table of the elements. A hover
+tool as also been added so that additional information about each element
+can be inspected:</p>
+
+<div class="bk-root"><div id="9A6DBE2CFAB94308AA7DA7BC071154E9" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 900px; height: 500px;"><div id="F08E7F7FE51642A7927265A0E82C9F87" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 900px; height: 500px;"><div id="A4BAB833B52A4BE69DC8145B7B3A54F1" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 900px; height: 500px;"><canvas class="bk-canvas" width="1125" height="625" style="width: 900px; height: 500px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"></div></div></div></div></div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.io</span> <span class="kn">import</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">bokeh.models</span> <span class="kn">import</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">HoverTool</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span>
+<span class="kn">from</span> <span class="nn">bokeh.sampledata.periodic_table</span> <span class="kn">import</span> <span class="n">elements</span>
+<span class="kn">from</span> <span class="nn">bokeh.transform</span> <span class="kn">import</span> <span class="n">dodge</span><span class="p">,</span> <span class="n">factor_cmap</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"periodic.html"</span><span class="p">)</span>
+
+<span class="n">periods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"I"</span><span class="p">,</span> <span class="s2">"II"</span><span class="p">,</span> <span class="s2">"III"</span><span class="p">,</span> <span class="s2">"IV"</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">,</span> <span class="s2">"VI"</span><span class="p">,</span> <span class="s2">"VII"</span><span class="p">]</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">19</span><span class="p">)]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"atomic mass"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"atomic mass"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"group"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">"group"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">periods</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">period</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">group</span> <span class="o">!=</span> <span class="s2">"-"</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">symbol</span> <span class="o">!=</span> <span class="s2">"Lr"</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">symbol</span> <span class="o">!=</span> <span class="s2">"Lu"</span><span class="p">]</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"alkali metal"</span>         <span class="p">:</span> <span class="s2">"#a6cee3"</span><span class="p">,</span>
+    <span class="s2">"alkaline earth metal"</span> <span class="p">:</span> <span class="s2">"#1f78b4"</span><span class="p">,</span>
+    <span class="s2">"metal"</span>                <span class="p">:</span> <span class="s2">"#d93b43"</span><span class="p">,</span>
+    <span class="s2">"halogen"</span>              <span class="p">:</span> <span class="s2">"#999d9a"</span><span class="p">,</span>
+    <span class="s2">"metalloid"</span>            <span class="p">:</span> <span class="s2">"#e08d49"</span><span class="p">,</span>
+    <span class="s2">"noble gas"</span>            <span class="p">:</span> <span class="s2">"#eaeaea"</span><span class="p">,</span>
+    <span class="s2">"nonmetal"</span>             <span class="p">:</span> <span class="s2">"#f1d4Af"</span><span class="p">,</span>
+    <span class="s2">"transition metal"</span>     <span class="p">:</span> <span class="s2">"#599d7A"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">source</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">900</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Periodic Table (omitting LA and AC Series)"</span><span class="p">,</span>
+           <span class="n">x_range</span><span class="o">=</span><span class="n">groups</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">periods</span><span class="p">)),</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span> <span class="s2">"period"</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="s2">"metal"</span><span class="p">,</span>
+       <span class="n">color</span><span class="o">=</span><span class="n">factor_cmap</span><span class="p">(</span><span class="s1">'metal'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">factors</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">cmap</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+
+<span class="n">text_props</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"source"</span><span class="p">:</span> <span class="n">source</span><span class="p">,</span> <span class="s2">"text_align"</span><span class="p">:</span> <span class="s2">"left"</span><span class="p">,</span> <span class="s2">"text_baseline"</span><span class="p">:</span> <span class="s2">"middle"</span><span class="p">}</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">dodge</span><span class="p">(</span><span class="s2">"group"</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">x_range</span><span class="p">)</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"period"</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"symbol"</span><span class="p">,</span> <span class="o">**</span><span class="n">text_props</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="o">.</span><span class="n">text_font_style</span><span class="o">=</span><span class="s2">"bold"</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">dodge</span><span class="p">(</span><span class="s2">"period"</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">"atomic number"</span><span class="p">,</span> <span class="o">**</span><span class="n">text_props</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="o">.</span><span class="n">text_font_size</span><span class="o">=</span><span class="s2">"8pt"</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">dodge</span><span class="p">(</span><span class="s2">"period"</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.35</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">"name"</span><span class="p">,</span> <span class="o">**</span><span class="n">text_props</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="o">.</span><span class="n">text_font_size</span><span class="o">=</span><span class="s2">"5pt"</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">dodge</span><span class="p">(</span><span class="s2">"period"</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">y_range</span><span class="p">),</span> <span class="n">text</span><span class="o">=</span><span class="s2">"atomic mass"</span><span class="p">,</span> <span class="o">**</span><span class="n">text_props</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">glyph</span><span class="o">.</span><span class="n">text_font_size</span><span class="o">=</span><span class="s2">"5pt"</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s2">"3"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">"VI"</span><span class="p">,</span> <span class="s2">"VII"</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="s2">"LA"</span><span class="p">,</span> <span class="s2">"AC"</span><span class="p">],</span> <span class="n">text_align</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">text_baseline</span><span class="o">=</span><span class="s2">"middle"</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">add_tools</span><span class="p">(</span><span class="n">HoverTool</span><span class="p">(</span><span class="n">tooltips</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"Name"</span><span class="p">,</span> <span class="s2">"@name"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Atomic number"</span><span class="p">,</span> <span class="s2">"@{atomic number}"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Atomic mass"</span><span class="p">,</span> <span class="s2">"@{atomic mass}"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Type"</span><span class="p">,</span> <span class="s2">"@metal"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"CPK color"</span><span class="p">,</span> <span class="s2">"$color[hex, swatch]:CPK"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Electronic configuration"</span><span class="p">,</span> <span class="s2">"@{electronic configuration}"</span><span class="p">),</span>
+<span class="p">]))</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">grid_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">axis_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">major_tick_line_color</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">p</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">major_label_standoff</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">orientation</span> <span class="o">=</span> <span class="s2">"horizontal"</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span><span class="s2">"top_center"</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+
+<footer class="footer">
+  <div class="footer-links">
+    <ul>
+      <li><span class="footer-title">About Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/team.html">Team</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/contact.html">Contact</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Links</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/faqs.html">FAQs</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/technical-vision.html">Technical vision</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/roadmap.html">Roadmap</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/citation.html">Citation</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Join Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/contribute.html">Contribute</a></li>
+      
+          <li><a href="https://groups.google.com/a/anaconda.com/forum/#!forum/bokeh">Mailing list</a></li>
+      
+          <li><a href="https://github.com/bokeh/bokeh">Github</a></li>
+      
+          <li><a href="https://twitter.com/BokehPlots">Twitter</a></li>
+      
+          <li><a href="https://www.youtube.com/channel/UCK0rSk29mmg4UT4bIOvPYhw">YouTube</a></li>
+      
+    </ul>
+    <ul class="copyright">
+      <li>© Copyright 2015, Anaconda.</li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-7', 'pydata.org');
+  ga('send', 'pageview');
+</script>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Handling Categorical Data — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"></body></html>

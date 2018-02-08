@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html -->
+<html lang="en" class="wf-sourcesanspro-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+  <title>Defining Key Concepts — Bokeh 0.12.13 documentation</title>
+  <meta name="description" content="Bokeh visualization library, documentation site.">
+  <meta name="author" content="Bokeh contributors">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script async="" src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/analytics.js.descarga"></script><script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/webfont.js.descarga"></script>
+  <link rel="stylesheet" href="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/css" media="all"><script>
+    WebFont.load({
+      google: {
+        families: ['Source Sans Pro']
+      }
+    });
+  </script>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/main.css">
+
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/jquery.min.js.descarga"></script>
+  <script type="text/javascript">
+    var _BOKEH_CURRENT_VERSION = "0.12.13";
+  </script>
+  <script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/main.js.descarga"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="https://bokeh.pydata.org/en/latest/_static/images/favicon.ico">
+
+  <!-- Canonical
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="canonical" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html">
+
+<script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.js.descarga"></script><script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.js.descarga"></script><script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.js.descarga"></script><script src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-gl-0.12.13.min.js.descarga"></script></head>
+<body class="">
+
+  <header class="navigation">
+    <div class="wrapper">
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html" class="logo">
+        <img src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/logo.png" alt="Bokeh Logo">
+      </a>
+      <a href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html" class="navigation-menu logo-text">Bokeh</a>
+      <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">Menu</a>
+      <nav>
+        <ul id="js-navigation-menu" class="navigation-menu">
+          
+              <li class="nav-link"><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/docs/gallery.html">Gallery</a></li>
+          
+              <li class="nav-link"><a href="https://bokeh.pydata.org/en/latest/">Docs</a></li>
+          
+              <li class="nav-link"><a href="https://github.com/bokeh/bokeh">Github</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="second-nav">
+    <nav>
+      <ul class="navigation-menu show">
+        <li class="nav-link more"><a href="https://bokeh.pydata.org/en/latest/index.html">0.12.13</a>
+            <ul class="submenu">
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.13/">0.12.13</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.12/">0.12.12</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.11/">0.12.11</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.10/">0.12.10</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.9/">0.12.9</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.7/">0.12.7</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.12.6/">0.12.6</a></li>
+              
+              <li class="version-link"><a href="https://bokeh.pydata.org/en/0.11.0/">0.11.0</a></li>
+              
+            </ul>
+        </li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/user_guide.html" class="current">User Guide</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/gallery.html">Gallery</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.13.html">Releases</a></li>
+            <li class="nav-link doc-head"><a href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <div class="search-bar">
+  <form role="search" action="https://bokeh.pydata.org/en/latest/search.html" method="get">
+    <input type="search" name="q" placeholder="Search">
+    <button type="submit">
+      <img src="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/search-icon-black.png" alt="Search Icon">
+    </button>
+  </form>
+</div>
+    </div>
+  </div>
+
+<!-- MAIN BODY OF DOCS –––––––––––––––––– -->
+  <div class="docs section">
+    <div class="toc">
+      <ul class="current">
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/installation.html">Installation</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide.html">User Guide</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 current show"><a class="current reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#">Defining Key Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#glossary">Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#output-methods">Output Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#bokeh-models"><em>bokeh.models</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#bokeh-plotting"><em>bokeh.plotting</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html">Plotting with Basic Glyphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/data.html">Providing Data for Plots and Tables</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/layout.html">Laying out Plots and Widgets</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/categorical.html">Handling Categorical Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/graph.html">Visualizing Network Graphs</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/geo.html">Mapping Geo Data</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tools.html">Configuring Plot Tools</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html">Styling Visual Attributes</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/annotations.html">Adding Annotations</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/interaction.html">Adding Interactions</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html">Running a Bokeh Server</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/notebook.html">Working in the Notebook</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/export.html">Exporting Plots</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/embed.html">Embedding Plots and Apps</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/cli.html">Using <code class="docutils literal"><span class="pre">bokeh</span></code> Commands</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/extensions.html">Extending Bokeh</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/compat.html">Leveraging Other Libraries</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/webgl.html">Speeding up with WebGL</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/bokehjs.html">Developing with JavaScript</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/tutorials.html">Tutorials</a></li>
+<li class="toctree-l1 show"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/info.html">Learning More</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference.html">Reference Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/0_bokeh.html">bokeh</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/application.html">bokeh.application</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/client.html">bokeh.client</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/colors.html">bokeh.colors</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/command.html">bokeh.command</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/core.html">bokeh.core</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/document.html">bokeh.document</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/driving.html">bokeh.driving</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/embed.html">bokeh.embed</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/events.html">bokeh.events</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/io.html">bokeh.io</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/layouts.html">bokeh.layouts</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/model.html">bokeh.model</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html">bokeh.models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/palettes.html">bokeh.palettes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html">bokeh.plotting</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/protocol.html">bokeh.protocol</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/resources.html">bokeh.resources</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sampledata.html">bokeh.sampledata</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/server.html">bokeh.server</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/settings.html">bokeh.settings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/sphinxext.html">bokeh.sphinxext</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/themes.html">bokeh.themes</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/tile_providers.html">bokeh.tile_providers</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/transform.html">bokeh.transform</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/util.html">bokeh.util</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html">Developer Guide</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/setup.html">Getting Set Up</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/env_vars.html">Environment Variables</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/testing.html">Testing</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/documentation.html">Documentation</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/models.html">Bokeh Models</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/server.html">Server Architecture</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bindings.html">Language Bindings</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bokehjs.html">BokehJS</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.11.html">0.12.11 (Nov 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.10.html">0.12.10 (Oct 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.9.html">0.12.9 (Sep 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.7.html">0.12.7 (Aug 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.6.html">0.12.6 (Jun 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.5.html">0.12.5 (Mar 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.4.html">0.12.4 (Jan 2017)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.3.html">0.12.3 (Oct 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.2.html">0.12.2 (Sept 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.1.html">0.12.1 (Jul 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.12.0.html">0.12.0 (Jun 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.1.html">0.11.1 (Feb 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.11.0.html">0.11.0 (Jan 2016)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.10.0.html">0.10.0 (Sep 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.3.html">0.9.3 (Aug 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.2.html">0.9.2 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.1.html">0.9.1 (Jul 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.9.0.html">0.9.0 (May 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.2.html">0.8.2 (Mar 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.1.html">0.8.1 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.8.0.html">0.8.0 (Feb 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.1.html">0.7.1 (Jan 2015)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.7.0.html">0.7.0 (Dec 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.1.html">0.6.1 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.6.0.html">0.6.0 (Sep 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.2.html">0.5.2 (Aug 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.1.html">0.5.1 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.5.0.html">0.5.0 (Jul 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.4.html">0.4.4 (Apr 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.2.html">0.4.2 (Mar 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.1.html">0.4.1 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.4.0.html">0.4.0 (Feb 2014)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.3.0.html">0.3.0 (Nov 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.2.0.html">0.2.0 (Oct 2013)</a></li>
+<li class="toctree-l1 hide"><a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/releases/0.1.0.html">0.1.0 (Apr 2013)</a></li>
+</ul>
+
+    </div>
+    <div class="content">
+        
+  <div class="section" id="defining-key-concepts">
+<span id="userguide-concepts"></span><h1>Defining Key Concepts<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#defining-key-concepts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="glossary">
+<span id="userguide-glossary"></span><h2>Glossary<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#glossary" title="Permalink to this headline">¶</a></h2>
+<p>In order to make the best use of this User Guide, it is important to have
+context for some high level concepts and terms. Here is a small glossary of
+some of the most important concepts in Bokeh.</p>
+<hr class="docutils">
+<dl class="docutils">
+<dt>Application</dt>
+<dd>A Bokeh application is a rendered Bokeh document, running in a browser.</dd>
+<dt>BokehJS</dt>
+<dd>The JavaScript client library that actually renders the visuals and
+handles the UI interactions for Bokeh plots and widgets in the browser.
+Typically, users will not have to think about this aspect of Bokeh
+much <em>(“We write the JavaScript, so you don’t have to!”)</em> but it is
+good to have basic knowledge of this dichotomy. For full details, see
+the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide/bokehjs.html#devguide-bokehjs"><span class="std std-ref">BokehJS</span></a> chapter of the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/dev_guide.html#devguide"><span class="std std-ref">Developer Guide</span></a>.</dd>
+<dt>Documents</dt>
+<dd>An organizing data structure for Bokeh applications. Documents
+contain all the Bokeh Models and data needed to render an interactive
+visualization or application in the browser.</dd>
+<dt>Embedding</dt>
+<dd>Various methods of including Bokeh plots and widgets into web apps and
+pages, or the IPython notebook. See <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/embed.html#userguide-embed"><span class="std std-ref">Embedding Plots and Apps</span></a> for more
+details.</dd>
+<dt>Glyphs</dt>
+<dd>The basic visual building blocks of Bokeh plots, e.g. lines, rectangles,
+squares, wedges, patches, etc. The <code class="docutils literal"><span class="pre">bokeh.plotting</span></code> interface provides
+a convenient way to create plots centered around glyphs. See
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#userguide-plotting"><span class="std std-ref">Plotting with Basic Glyphs</span></a> for more information.</dd>
+<dt>Models</dt>
+<dd>The lowest-level objects that comprise Bokeh “scenegraphs”. These live
+in the <code class="docutils literal"><span class="pre">bokeh.models</span></code> interface. <em>Most users will not use this level
+of interface to assemble plots directly.</em> However, ultimately all Bokeh
+plots consist of collections of models, so it is important to understand
+them enough to configure their attributes and properties. See
+<a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html#userguide-styling"><span class="std std-ref">Styling Visual Attributes</span></a> for more information.</dd>
+<dt>Server</dt>
+<dd>The Bokeh server is an optional component that can be used for sharing
+and publishing Bokeh plots and apps, for handling streaming of large data
+sets, or for enabling sophisticated user interactions based off of widgets
+and selections. See <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/server.html#userguide-server"><span class="std std-ref">Running a Bokeh Server</span></a> for more explanation.</dd>
+<dt>Widgets</dt>
+<dd>User interface elements outside of a Bokeh plot such as sliders, drop down
+menus, buttons, etc. Events and updates from widgets can inform additional
+computations, or cause Bokeh plots to update. Widgets can be used in both
+standalone applications or with the Bokeh server. For examples and
+information, see <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/interaction.html#userguide-interaction"><span class="std std-ref">Adding Interactions</span></a>.</dd>
+</dl>
+<hr class="docutils">
+</div>
+<div class="section" id="output-methods">
+<span id="userguide-output-methods"></span><h2>Output Methods<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#output-methods" title="Permalink to this headline">¶</a></h2>
+<p>As we will see demonstrated frequently throughout the User Guide, there are
+various ways to generate output for Bokeh documents. The most common for
+interactive usage are:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">output_file</span></code></dt>
+<dd>For generating simple standalone HTML documents for Bokeh visualizations.</dd>
+<dt><code class="docutils literal"><span class="pre">output_notebook</span></code></dt>
+<dd>For displaying Bokeh visualizations inline in Jupyter/Zeppelin notebook cells.</dd>
+</dl>
+<p>These functions are most often used together with the <code class="docutils literal"><span class="pre">show</span></code> or <code class="docutils literal"><span class="pre">save</span></code>
+functions. Scripts that output with these typically look something like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"output.html"</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If this script is called <code class="docutils literal"><span class="pre">foo.py</span></code> then executing <code class="docutils literal"><span class="pre">python</span> <span class="pre">foo.py</span></code> will
+result in an HTML file <code class="docutils literal"><span class="pre">output.html</span></code> being generated with the line plot.
+These functions are often useful in interactive settings, or for creating
+standalone Bokeh documents to serve from (Flask, Django, etc.) web
+applications.</p>
+<p>However, Bokeh also comes with a powerful command line tool <code class="docutils literal"><span class="pre">bokeh</span></code> that
+can also be used to generate various kinds of output:</p>
+<dl class="docutils">
+<dt><code class="docutils literal"><span class="pre">bokeh</span> <span class="pre">html</span></code></dt>
+<dd>Create standalone HTML documents from any kind of Bokeh application
+source: e.g., python scripts, app directories, JSON files, and others.</dd>
+<dt><code class="docutils literal"><span class="pre">bokeh</span> <span class="pre">json</span></code></dt>
+<dd>Generate a serialized JSON representation of a Bokeh document from any
+kind of Bokeh application source.</dd>
+<dt><code class="docutils literal"><span class="pre">bokeh</span> <span class="pre">serve</span></code></dt>
+<dd>Publish Bokeh documents as interactive web applications.</dd>
+</dl>
+<p>An advantage of using the <code class="docutils literal"><span class="pre">bokeh</span></code> command is that the code you write does not
+have to specify any particular output method or format. You can write <em>just the
+visualization code</em> once, and decide later to output in different ways. The
+above example would be simplified to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">curdoc</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">curdoc</span><span class="p">()</span><span class="o">.</span><span class="n">add_root</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, you can run <code class="docutils literal"><span class="pre">bokeh</span> <span class="pre">html</span> <span class="pre">foo.py</span></code> to generate a standalone HTML file,
+or <code class="docutils literal"><span class="pre">bokeh</span> <span class="pre">serve</span> <span class="pre">foo.py</span></code> to start serving this document as a web application.
+For more information on the command line tool see <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/cli.html#userguide-cli"><span class="std std-ref">Using bokeh Commands</span></a>.</p>
+</div>
+<div class="section" id="interfaces">
+<span id="userguide-interfaces"></span><h2>Interfaces<a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#interfaces" title="Permalink to this headline">¶</a></h2>
+<p>Bokeh is intended to provide a quick and simple interface to data scientists
+and domain experts who do not want to be distracted by the details of the
+software, and also provide a richly detailed interface to application
+developers and software engineers who may want more control or access to more
+sophisticated features. Because of this, Bokeh takes a layered approach and
+offers different programming interfaces appropriate to different levels
+of use. This section provides an overview of the various interfaces
+that are available to Bokeh users, as well as more context about the most
+important concepts central to the library. If you’d like to jump right
+into basic plotting, go to <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#userguide-plotting"><span class="std std-ref">Plotting with Basic Glyphs</span></a>.</p>
+<div class="section" id="bokeh-models">
+<h3><em>bokeh.models</em><a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#bokeh-models" title="Permalink to this headline">¶</a></h3>
+<p>Bokeh is actually composed of two library components.</p>
+<p>The first component is a JavaScript library, BokehJS, that runs in the
+browser. This library is responsible for all of the rendering and
+user interaction. Its input is a collection of declarative JSON objects that
+comprise a “scenegraph”. The objects in this scenegraph describe everything
+that BokehJS should handle: what plots and widgets are present and in what
+arrangement, what tools and renderers and axes the plots will have, etc. These
+JSON objects are converted into <a class="reference external" href="http://backbonejs.org/">Backbone</a> Models in the browser, and are
+rendered by corresponding <a class="reference external" href="http://backbonejs.org/">Backbone</a> Views.</p>
+<p>The second component is a library in Python (or <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/quickstart.html#quickstart-other-languages"><span class="std std-ref">other languages</span></a>) that can
+generate the JSON described above. In the Python Bokeh library, this is
+accomplished at the lowest level by exposing a set of “model” classes
+that exactly mirror the set of <a class="reference external" href="http://backbonejs.org/">Backbone</a> Models that are created in the
+browser. These python model classes know how to validate their content and
+attributes, and also how to serialize themselves to JSON. All of
+these low level models live in the <strong>low-level</strong> <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html#bokeh-models"><span class="std std-ref">bokeh.models</span></a> interface.
+Most of the models are very simple, usually consisting of a few property
+attributes and no methods. Model attributes can either be configured when
+the model is created, or later by setting attribute values on the model
+object. Here are some examples for a <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/glyphs/rect.html#bokeh.models.glyphs.Rect" title="bokeh.models.glyphs.Rect"><code class="xref py py-class docutils literal"><span class="pre">Rect</span></code></a> glyph object:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># properties can be configured when a model object is initialized</span>
+<span class="n">glyph</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"y2"</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># or by assigning values to attributes on the model later</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">fill_alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">glyph</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="s2">"navy"</span>
+</pre></div>
+</div>
+<p>These methods of configuration work in general for all Bokeh models. Because
+of that, and because all Bokeh interfaces ultimately produce collections
+of Bokeh models, styling and configuring plots and widgets is accomplished
+in basically the same way, regardless of which interface is used.</p>
+<p>Using the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models.html#bokeh-models"><span class="std std-ref">bokeh.models</span></a> interface provides complete control over how Bokeh
+plots and Bokeh widgets are put together and configured. However, it provides
+no help with assembling the models in meaningful or correct ways. It is
+entirely up to developers to build the scenegraph “by hand”. For this reason,
+most users will probably want to use one of the higher level interfaces
+described below, unless they have specialized requirements that necessitate
+finer control. For more information about the details of all Bokeh models,
+consult the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference.html#refguide"><span class="std std-ref">Reference Guide</span></a>.</p>
+</div>
+<div class="section" id="bokeh-plotting">
+<h3><em>bokeh.plotting</em><a class="headerlink" href="https://bokeh.pydata.org/en/latest/docs/user_guide/concepts.html#bokeh-plotting" title="Permalink to this headline">¶</a></h3>
+<p>Bokeh provides a <strong>mid-level</strong> general purpose <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting"><span class="std std-ref">bokeh.plotting</span></a> interface, which
+is similar in specificity to <a class="reference external" href="http://matplotlib.org/">Matplotlib</a> or <a class="reference external" href="http://www.mathworks.com/products/matlab/">Matlab</a> style plotting interfaces.
+It is centered around having users relate the visual glyphs they would like
+to have displayed to their data, and otherwise taking care of putting together
+plots with sensible default axes, grids, and tools. All the hard work to
+assemble the appropriate Bokeh Models to form a scenegraph
+that BokehJS can render is handled automatically.</p>
+<p>The main class in the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting"><span class="std std-ref">bokeh.plotting</span></a> interface is the <code class="xref py py-class docutils literal"><span class="pre">Figure</span></code> class. This
+is a subclass of the basic <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/models/plots.html#bokeh.models.plots.Plot" title="bokeh.models.plots.Plot"><code class="xref py py-class docutils literal"><span class="pre">Plot</span></code></a> model, that includes methods for easily
+adding different kinds of glyphs to a plot. Additionally it composes default
+axes, grids, and tools in the proper way without any extra effort. Typically,
+users will want to create <code class="xref py py-class docutils literal"><span class="pre">Figure</span></code> objects by using the <code class="xref py py-func docutils literal"><span class="pre">figure()</span></code> function.</p>
+<p>A prototypical example of the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting"><span class="std std-ref">bokeh.plotting</span></a> usage is show below, along
+with the resulting plot:</p>
+<div class="highlight-python" id="docs/user_guide/concepts.bokeh-plot-a3a95cf96c224256b7264f4cc4956c3e.js"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">show</span>
+
+<span class="c1"># create a Figure object</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s2">"pan,reset,save"</span><span class="p">)</span>
+
+<span class="c1"># add a Circle renderer to this figure</span>
+<span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># specify how to output the plot(s)</span>
+<span class="n">output_file</span><span class="p">(</span><span class="s2">"foo.html"</span><span class="p">)</span>
+
+<span class="c1"># display the figure</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+
+<div class="bk-root"><div id="DD18D8363B8D432980F9D6C14E852499" class="bk-plot-layout bk-layout-fixed" style="position: relative; width: 300px; height: 300px;"><div id="13511845532D4AAD94F7834DF590548F" class="bk-plot-wrapper" style="position: absolute; left: 0px; top: 0px; width: 300px; height: 300px;"><div id="D4E63B45F34A4E61A05DECAC6CC50187" class="bk-canvas-wrapper" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 300px; height: 300px;"><canvas class="bk-canvas" width="375" height="375" style="width: 300px; height: 300px;"></canvas><div class="bk-canvas-overlays"></div><div class="bk-canvas-events"><div id="4F5DBE6A5E654158B583AF57E075C4C2" style="position: absolute; left: 270px; top: 5px; width: 30px; height: 271px; overflow: hidden;"><div id="D13BB4BABC674756898D21F429F44F68" class="bk-toolbar bk-toolbar-right"><a href="https://bokeh.pydata.org/" target="_blank" class="bk-logo bk-logo-small"></a><div class="bk-button-bar"><div id="A2B2E2BD0E8C48EEA5A1FCE26C3396C7" class="bk-toolbar-button bk-tool-icon-pan bk-active" title="Pan"></div></div><div class="bk-button-bar"><div id="3DF960C9F44846E5851502322C7C99D1" class="bk-toolbar-button bk-tool-icon-reset" title="Reset"></div><div id="A4732080D659421AA9B29821F310992C" class="bk-toolbar-button bk-tool-icon-save" title="Save"></div></div></div></div></div></div></div></div></div><p>The main observation is that the typical usage involves creating plots objects
+with the <code class="xref py py-func docutils literal"><span class="pre">figure()</span></code> function, then using the glyph methods like <code class="xref py py-func docutils literal"><span class="pre">Figure.circle</span></code>
+to add renderers for our data. We do not have to worry about configuring any
+axes or grids (although we can configure them if we need to), and specifying
+tools is done simply with the names of tools to add. Finally we use some output
+functions to display our plot.</p>
+<p>There are many other possibilities: saving our plot instead of showing it,
+styling or removing the axes or grids, adding additional renderers, and
+laying out multiple plots together. The <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide/plotting.html#userguide-plotting"><span class="std std-ref">Plotting with Basic Glyphs</span></a> section of
+this <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/user_guide.html#userguide"><span class="std std-ref">User Guide</span></a> will walk through many more examples and common use
+cases of using the <a class="reference internal" href="https://bokeh.pydata.org/en/latest/docs/reference/plotting.html#bokeh-plotting"><span class="std std-ref">bokeh.plotting</span></a> interface.</p>
+</div>
+</div>
+</div>
+
+
+    </div>
+  </div>
+
+<!-- END MAIN BODY OF DOCS ––––––––––––– -->
+
+<footer class="footer">
+  <div class="footer-links">
+    <ul>
+      <li><span class="footer-title">About Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/about-bokeh.html">About</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/team.html">Team</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/contact.html">Contact</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Links</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/faqs.html">FAQs</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/technical-vision.html">Technical vision</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/roadmap.html">Roadmap</a></li>
+      
+          <li><a href="https://bokehplots.com/pages/citation.html">Citation</a></li>
+      
+    </ul>
+    <ul>
+      <li><span class="footer-title">Join Us</span></li>
+      
+          <li><a href="https://bokehplots.com/pages/contribute.html">Contribute</a></li>
+      
+          <li><a href="https://groups.google.com/a/anaconda.com/forum/#!forum/bokeh">Mailing list</a></li>
+      
+          <li><a href="https://github.com/bokeh/bokeh">Github</a></li>
+      
+          <li><a href="https://twitter.com/BokehPlots">Twitter</a></li>
+      
+          <li><a href="https://www.youtube.com/channel/UCK0rSk29mmg4UT4bIOvPYhw">YouTube</a></li>
+      
+    </ul>
+    <ul class="copyright">
+      <li>© Copyright 2015, Anaconda.</li>
+    </ul>
+  </div>
+</footer>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-7', 'pydata.org');
+  ga('send', 'pageview');
+</script>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+<link href="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-widgets-0.12.13.min.css" rel="stylesheet" type="text/css"><link href="./Defining Key Concepts — Bokeh 0.12.13 documentation_files/bokeh-tables-0.12.13.min.css" rel="stylesheet" type="text/css"></body></html>
